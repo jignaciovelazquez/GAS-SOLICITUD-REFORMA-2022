@@ -57,8 +57,6 @@
 
                     <div class="col-12 position-relative">
                         <div class="row">
-
-
                             <div class="col-12 position-relative">
                                 <div class="input-group">
                                     <div class="col-6">
@@ -79,9 +77,9 @@
                             <div class="col-12 position-relative">
                                 <div class="input-group">
                                     <div class="col-6">
-                                        <select class="form-select" required>
+                                        <select id="TIPO" class="form-select" required>
                                             <option value="0" selected>Seleccione una opcion</option>
-                                            <option value="1">HFC - No hay tap hot disponible</option>
+                                            <option value="1">HFC - No hay Tap HOT disponible</option>
                                             <option value="2">HFC - Edificio no contemplado</option>
                                             <option value="3">HFC - No se puede tomar Tension</option>
                                             <option value="4">HFC - Niveles fuera de rango</option>
@@ -97,23 +95,23 @@
                                         </div>
                                     </div>
                                     <div class="col-3">
-                                        <select class="form-select" required>
+                                        <select if="FRECUENCIA" class="form-select" required>
                                             <option selected>Seleccione una opcion</option>
                                             <option value="1">750MHz</option>
                                             <option value="2">1000MHz</option>
                                         </select>
                                         <div class="invalid-tooltip">
-                                            ¡Debes Seleccionar el Tipo de Tecnologia!
+                                            ¡Debes Seleccionar el Tipo de Frecuencia de la Red!
                                         </div>
                                     </div>
                                     <div class="col-3">
-                                        <select class="form-select" required>
+                                        <select id="ARMADO" class="form-select" required>
                                             <option selected>Seleccione una opcion</option>
                                             <option value="1">EXTERIOR</option>
                                             <option value="2">MONTANTE</option>
                                         </select>
                                         <div class="invalid-tooltip">
-                                            ¡Debes Seleccionar el Tipo de Armado!
+                                            ¡Debes Seleccionar el Tipo de Armado a realizar en el Edif!
                                         </div>
                                     </div>
                                 </div>
@@ -138,8 +136,8 @@
                         <div class="row">
                             <label for="inputPassword" class="col-sm-3 col-form-label text-start">Dirección:</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="NODO" placeholder="Ingrese la Dirección"
-                                    required>
+                                <input type="text" class="form-control" id="DIRECCION"
+                                    placeholder="Ingrese la Dirección" required>
                                 <div class="invalid-tooltip">
                                     ¡Debes ingresar la Dirección!
                                 </div>
