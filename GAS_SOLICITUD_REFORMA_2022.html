@@ -57,17 +57,40 @@
 
                     <div class="col-12 position-relative">
                         <div class="row">
-                            <label for="inputPassword" class="col-sm-12 col-form-label fw-bold text-start">Tipo de
-                                Reforma a
-                                Solicitar</label>
+
+
+                            <div class="col-12 position-relative">
+                                <div class="input-group">
+                                    <div class="col-6">
+                                        <label for="inputPassword" class="col col-form-label fw-bold text-start">Tipo de
+                                            Reforma a
+                                            Solicitar</label>
+                                    </div>
+                                    <div class="col-3">
+                                        <label for="inputPassword"
+                                            class="col col-form-label fw-bold text-start">Frecuencia</label>
+                                    </div>
+                                    <div class="col-3">
+                                        <label for="inputPassword"
+                                            class="col col-form-label fw-bold text-start">Armado</label>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="col-12 position-relative">
                                 <div class="input-group">
                                     <div class="col-6">
                                         <select class="form-select" required>
-                                            <option selected>Seleccione una opcion</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
+                                            <option value="0" selected>Seleccione una opcion</option>
+                                            <option value="1">HFC - No hay tap hot disponible</option>
+                                            <option value="2">HFC - Edificio no contemplado</option>
+                                            <option value="3">HFC - No se puede tomar Tension</option>
+                                            <option value="4">HFC - Niveles fuera de rango</option>
+                                            <option value="5">HFC - Reforma Civil</option>
+                                            <option value="6">FTTH - Detalle de Empalme</option>
+                                            <option value="7">FTTH - Iluminacion de CAJA</option>
+                                            <option value="7">FTTH - Iluminacion + Empalme</option>
+                                            <option value="8">FTTH - Extension de Red</option>
+                                            <option value="9">FTTH - Reforma Civil</option>
                                         </select>
                                         <div class="invalid-tooltip">
                                             ¡Debes Seleccionar el Tipo de Reforma!
@@ -124,7 +147,7 @@
                         </div>
                     </div>
 
-                    <section id="InForHFC" class="row g-2 d-none d-block">
+                    <section id="InForHFC" class="row g-2 ">
 
                         <div class="col-12 position-relative ">
                             <div class="row">
@@ -425,11 +448,11 @@
                     <div class="col-12 pt-2">
                         <div class="row">
                             <div class="col-6 d-grid gap-2">
-                                <button type="submit" class="btn btn-success">GENERAR</button>
+                                <button id="GENERAR" type="submit" class="btn btn-success">GENERAR</button>
 
                             </div>
                             <div class="col-6 d-grid gap-2">
-                                <button type="button" class="btn btn-danger">BORRAR</button>
+                                <button id="BORRAR" type="button" class="btn btn-danger">BORRAR</button>
 
                             </div>
                         </div>
@@ -468,8 +491,9 @@
                             <div class="col-sm-5">
                                 <select class="form-select">
                                     <option selected>Seleccione una opcion</option>
-                                    <option value="1">750MHz</option>
-                                    <option value="2">1000MHz</option>
+                                    <option value="1">HOT TAP</option>
+                                    <option value="2">No Contemplado</option>
+                                    <option value="3">Obra Civil</option>
                                 </select>
                             </div>
                         </div>
@@ -516,28 +540,9 @@
 
 
 
-        <script>
-            // Example starter JavaScript for disabling form submissions if there are invalid fields
-            (() => {
-                'use strict'
-
-                // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                const forms = document.querySelectorAll('.needs-validation')
-
-                // Loop over them and prevent submission
-                Array.from(forms).forEach(form => {
-                    form.addEventListener('submit', event => {
-                        if (!form.checkValidity()) {
-                            event.preventDefault()
-                            event.stopPropagation()
-                        }
-
-                        form.classList.add('was-validated')
-                    }, false)
-                })
-            })()
-
-        </script>
+        <script src="./GAS_SOLICITUD_REFORMA_2022.js"></script>
+        <?!= include('JavaScript'); ?>
+        <!---------- Para GAS ---------------------->
 </body>
 
 </html>
