@@ -60,43 +60,40 @@
                             <div class="col-12 position-relative">
                                 <div class="input-group">
                                     <div class="col-6">
-                                        <label for="inputPassword" class="col col-form-label fw-bold text-start">Tipo de
-                                            Reforma a
+                                        <label class="col col-form-label fw-bold text-start">Tipo de Reforma a
                                             Solicitar</label>
                                     </div>
                                     <div class="col-3">
-                                        <label for="inputPassword"
-                                            class="col col-form-label fw-bold text-start">Frecuencia</label>
+                                        <label class="col col-form-label fw-bold text-start">Frecuencia</label>
                                     </div>
                                     <div class="col-3">
-                                        <label for="inputPassword"
-                                            class="col col-form-label fw-bold text-start">Armado</label>
+                                        <label class="col col-form-label fw-bold text-start">Armado</label>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 position-relative">
+                            <div id="TOP" class="col-12 position-relative">
                                 <div class="input-group">
                                     <div class="col-6">
                                         <select id="TIPO" class="form-select" required>
-                                            <option value="0" selected>Seleccione una opcion</option>
-                                            <option value="1">HFC - No hay Tap HOT disponible</option>
-                                            <option value="2">HFC - Edificio no contemplado</option>
-                                            <option value="3">HFC - No se puede tomar Tension</option>
-                                            <option value="4">HFC - Niveles fuera de rango</option>
-                                            <option value="5">HFC - Reforma Civil</option>
-                                            <option value="6">FTTH - Detalle de Empalme</option>
-                                            <option value="7">FTTH - Iluminacion de CAJA</option>
-                                            <option value="7">FTTH - Iluminacion + Empalme</option>
-                                            <option value="8">FTTH - Extension de Red</option>
-                                            <option value="9">FTTH - Reforma Civil</option>
+                                            <option value=0 selected disabled value="">Seleccione una opcion</option>
+                                            <option value=1>HFC - No hay Tap HOT disponible</option>
+                                            <option value=2>HFC - Edificio no contemplado</option>
+                                            <option value=3>HFC - No se puede tomar Tension</option>
+                                            <option value=4>HFC - Niveles fuera de rango</option>
+                                            <option value=5>HFC - Reforma Civil</option>
+                                            <option value=6>FTTH - (SC) - Detalle de Empalme </option>
+                                            <option value=7>FTTH - (FC) - Iluminacion de CAJA</option>
+                                            <option value=8>FTTH - (FC + SC) - Iluminacion + Empalme</option>
+                                            <option value=9>FTTH - Extension de Red</option>
+                                            <option value=10>FTTH - Reforma Civil</option>
                                         </select>
                                         <div class="invalid-tooltip">
                                             ¡Debes Seleccionar el Tipo de Reforma!
                                         </div>
                                     </div>
                                     <div class="col-3">
-                                        <select if="FRECUENCIA" class="form-select" required>
-                                            <option selected>Seleccione una opcion</option>
+                                        <select id="FRECUENCIA" class="form-select" required>
+                                            <option selected disabled value="">Seleccione una opcion</option>
                                             <option value="1">750MHz</option>
                                             <option value="2">1000MHz</option>
                                         </select>
@@ -106,7 +103,7 @@
                                     </div>
                                     <div class="col-3">
                                         <select id="ARMADO" class="form-select" required>
-                                            <option selected>Seleccione una opcion</option>
+                                            <option selected disabled value="">Seleccione una opcion</option>
                                             <option value="1">EXTERIOR</option>
                                             <option value="2">MONTANTE</option>
                                         </select>
@@ -121,9 +118,9 @@
 
                     <div class="col-12 position-relative">
                         <div class="row">
-                            <label for="inputPassword" class="col-sm-3 col-form-label text-start">Nodo:</label>
+                            <label for="NODO" class="col-sm-3 col-form-label text-start">Nodo:</label>
                             <div class="col-sm-5">
-                                <input type="date" class="form-control" id="NODO" placeholder="Ingrese el Nodo"
+                                <input type="text" class="form-control" id="NODO" placeholder="Ingrese el Nodo"
                                     required>
                                 <div class="invalid-tooltip">
                                     ¡Debes ingresar el Nodo!
@@ -134,9 +131,9 @@
 
                     <div class="col-12 position-relative">
                         <div class="row">
-                            <label for="inputPassword" class="col-sm-3 col-form-label text-start">Dirección:</label>
+                            <label for="DIRECCION" class="col-sm-3 col-form-label text-start">Dirección:</label>
                             <div class="col-sm-9">
-                                <input type="email" class="form-control" id="DIRECCION"
+                                <input type="text" class="form-control" id="DIRECCION"
                                     placeholder="Ingrese la Dirección" required>
                                 <div class="invalid-tooltip">
                                     ¡Debes ingresar la Dirección!
@@ -149,10 +146,10 @@
 
                         <div class="col-12 position-relative ">
                             <div class="row">
-                                <label for="inputPassword" class="col-sm-3 col-form-label text-start">Entre calle
+                                <label for="ENTRECALLE1" class="col-sm-3 col-form-label text-start">Entre calle
                                     1:</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="NODO"
+                                    <input type="text" class="form-control" id="ENTRECALLE1"
                                         placeholder="Ingrese la Entre calle 1" required>
                                     <div class="invalid-tooltip">
                                         ¡Debes ingresar la Entre calle 1!
@@ -163,10 +160,10 @@
 
                         <div class="col-12 position-relative">
                             <div class="row">
-                                <label for="inputPassword" class="col-sm-3 col-form-label text-start">Entre calle
+                                <label for="ENTRECALLE2" class="col-sm-3 col-form-label text-start">Entre calle
                                     2:</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="NODO"
+                                    <input type="text" class="form-control" id="ENTRECALLE2"
                                         placeholder="Ingrese la Entre calle 2" required>
                                     <div class="invalid-tooltip">
                                         ¡Debes ingresar la Entre calle 2!
@@ -177,10 +174,9 @@
 
                         <div class="col-12 position-relative pt-1">
                             <div class="input-group">
-                                <label for="inputPassword" class="col-sm-2 col-form-label text-start">Poste:</label>
+                                <label for="POSTE" class="col-sm-2 col-form-label text-start">Poste:</label>
                                 <input type="text" class="form-control"
-                                    placeholder="Ingresar la Dirección del Poste o columna" aria-label="Ingrese el ID"
-                                    aria-describedby="BUSCAR" id="ID" required>
+                                    placeholder="Ingresar la Dirección del Poste o columna" id="POSTE" required>
                                 <div class="invalid-tooltip">
                                     ¡Debes ingresar la Dirección del Poste o columna!
                                 </div>
@@ -190,13 +186,13 @@
 
                         <div class="col-12 position-relative">
                             <div class="row">
-                                <label for="inputPassword" class="col-4 col-form-label text-start">Metros de
+                                <label for="METROS" class="col-4 col-form-label text-start">Metros de
                                     RG11:</label>
                                 <div class="col-5">
-                                    <input type="text" class="form-control" id="NODO" placeholder="Ingrese el Nodo"
-                                        required>
+                                    <input type="number" class="form-control" id="METROS"
+                                        placeholder="Ingrese la cantidad de Mts de RG11" required>
                                     <div class="invalid-tooltip">
-                                        ¡Debes ingresar el Nodo!
+                                        ¡Debes ingresar la cantidad de Mts de RG11!
                                     </div>
                                 </div>
                             </div>
@@ -204,13 +200,13 @@
 
                         <div class="col-12 position-relative">
                             <div class="row">
-                                <label for="inputPassword" class="col-4 col-form-label text-start">Cantidad de
+                                <label for="PISOS" class="col-4 col-form-label text-start">Cantidad de
                                     Pisos:</label>
                                 <div class="col-5">
-                                    <input type="text" class="form-control" id="NODO" placeholder="Ingrese el Nodo"
-                                        required>
+                                    <input type="number" class="form-control" id="PISOS"
+                                        placeholder="Ingrese la cantidad de pisos del edif" required>
                                     <div class="invalid-tooltip">
-                                        ¡Debes ingresar el Nodo!
+                                        ¡Debes ingresar la cantidad de pisos del edif considerando PB!
                                     </div>
                                 </div>
                             </div>
@@ -218,86 +214,85 @@
 
                         <div class="col-12 position-relative">
                             <div class="row">
-                                <label for="inputPassword" class="col-4 col-form-label text-start">Cantidad de
+                                <label for="UF" class="col-4 col-form-label text-start">Cantidad de
                                     UF:</label>
                                 <div class="col-5">
-                                    <input type="text" class="form-control" id="NODO" placeholder="Ingrese el Nodo"
-                                        required>
+                                    <input type="number" class="form-control" id="UF"
+                                        placeholder="Ingrese la cantidad de UF del edif" required>
                                     <div class="invalid-tooltip">
-                                        ¡Debes ingresar el Nodo!
+                                        ¡Debes ingresar la cantidad de UF del edif!
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-12 position-relative">
+                        <div id="TAPA" class="col-12 position-relative">
                             <div class="row">
-                                <label for="inputPassword" class="col-5 col-form-label text-start">Capacidad de Tap
+                                <label for="TAPHOT" class="col-5 col-form-label text-start">Capacidad de Tap
                                     HOT:</label>
                                 <div class="col-5">
-                                    <select class="form-select">
-                                        <option selected>Seleccione una opcion</option>
+                                    <select id="TAPHOT" class="form-select" required>
+                                        <option selected disabled value="">Seleccione una opcion</option>
                                         <option value="1">X2</option>
                                         <option value="2">X4</option>
                                         <option value="3">X8</option>
                                     </select>
                                     <div class="invalid-tooltip">
-                                        ¡Debes ingresar el Nodo!
+                                        ¡Debes Seleccionar la TAP HOT a instalar!
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-12 position-relative">
+                        <div id="AMPLIFICADOR" class="col-12 position-relative">
                             <div class="row">
-                                <label for="inputPassword" class="col-7 col-form-label text-start">Disponibilidad
+                                <label for="AMPLI" class="col-7 col-form-label text-start">Disponibilidad
                                     para instalar Amplificador 90 [V]:</label>
                                 <div class="col-3">
-                                    <select class="form-select">
-                                        <option selected>Seleccione</option>
+                                    <select id="AMPLI" class="form-select" required>
+                                        <option selected disabled value="">Seleccione</option>
                                         <option value="1">SI</option>
                                         <option value="2">NO</option>
                                     </select>
                                     <div class="invalid-tooltip">
-                                        ¡Debes ingresar el Nodo!
+                                        ¡Debes indicar si se necesita y es posible instalar amplificador 90v!
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-12 position-relative">
+                        <div id="VALORES" class="col-12 position-relative">
                             <div class="row">
-                                <label for="inputPassword" class="col-sm-12 col-form-label text-start">Valores que debe
+                                <label for="VALORES_DE_RED" class="col-sm-12 col-form-label text-start">Valores que debe
                                     entregar la red:</label>
                                 <div class="col-12 position-relative">
                                     <div class="row">
-                                        <label for="inputPassword"
-                                            class="col-2 col-form-label text-start">CH116:</label>
+                                        <label for="CH116" class="col-2 col-form-label text-start">CH116:</label>
                                         <div class="col-4">
-                                            <input type="text" class="form-control" id="NODO"
+                                            <input type="number" class="form-control" id="CH116"
                                                 placeholder="Ingrese el Nodo" required>
                                             <div class="invalid-tooltip">
-                                                ¡Debes ingresar el Nodo!
+                                                ¡Debes ingresar el valor para el canal CH116!
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <label for="inputPassword" class="col-2 col-form-label text-start">CH3:</label>
+                                        <label for="CH3" class="col-2 col-form-label text-start">CH3:</label>
                                         <div class="col-4">
-                                            <input type="text" class="form-control" id="NODO"
+                                            <input type="number" class="form-control" id="CH3"
                                                 placeholder="Ingrese el Nodo" required>
                                             <div class="invalid-tooltip">
-                                                ¡Debes ingresar el Nodo!
+                                                ¡Debes ingresar el valor para el canal CH3!
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <label for="inputPassword" class="col-2 col-form-label text-start">RH:</label>
+                                        <label for="RETORNO" class="col-2 col-form-label text-start">RH:</label>
                                         <div class="col-4">
-                                            <input type="text" class="form-control" id="NODO"
+                                            <input type="number" class="form-control" id="RETORNO"
                                                 placeholder="Ingrese el Nodo" required>
                                             <div class="invalid-tooltip">
-                                                ¡Debes ingresar el Nodo!
+                                                ¡Debes ingresar el valor para el Retorno High!
                                             </div>
                                         </div>
                                     </div>
@@ -379,7 +374,7 @@
                                     Contemplado?:</label>
                                 <div class="col-3">
                                     <select class="form-select">
-                                        <option selected>Seleccione</option>
+                                        <option selected disabled value="">Seleccione</option>
                                         <option value="1">SI</option>
                                         <option value="2">NO</option>
                                     </select>
@@ -398,7 +393,7 @@
                                     <div class="input-group">
                                         <div class="col-6">
                                             <select class="form-select" required>
-                                                <option selected>Seleccione una opcion</option>
+                                                <option selected disabled value="">Seleccione una opcion</option>
                                                 <option value="1">FC50</option>
                                                 <option value="1">FC100</option>
                                                 <option value="1">FC150</option>
@@ -434,11 +429,11 @@
 
                     </section>
 
-                    <div class="col-12 position-relative">
+                    <div id="OBSERVACION" class="col-12 position-relative">
                         <div class="row">
-                            <label for="inputPassword" class="col-sm-3 col-form-label text-start">Observaciones:</label>
+                            <label for="OBS" class="col-sm-3 col-form-label text-start">Observaciones:</label>
                             <div class="col-sm-12">
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+                                <textarea class="form-control" id="OBS" rows="2"></textarea>
                             </div>
                         </div>
                     </div>
@@ -488,7 +483,7 @@
                             </div>
                             <div class="col-sm-5">
                                 <select class="form-select">
-                                    <option selected>Seleccione una opcion</option>
+                                    <option selected disabled value="">Seleccione una opcion</option>
                                     <option value="1">HOT TAP</option>
                                     <option value="2">No Contemplado</option>
                                     <option value="3">Obra Civil</option>
