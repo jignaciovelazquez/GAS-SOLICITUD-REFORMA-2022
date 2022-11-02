@@ -76,17 +76,22 @@
                                 <div class="input-group">
                                     <div class="col-6">
                                         <select id="TIPO" class="form-select" required>
-                                            <option value=0 selected disabled value="">Seleccione una opcion</option>
+                                            <option value="" selected disabled>Seleccione una opcion</option>
                                             <option value=1>HFC - No hay Tap HOT disponible</option>
                                             <option value=2>HFC - Edificio no contemplado</option>
                                             <option value=3>HFC - No se puede tomar Tension</option>
                                             <option value=4>HFC - Niveles fuera de rango</option>
                                             <option value=5>HFC - Reforma Civil</option>
-                                            <option value=6>FTTH - (SC) - Detalle de Empalme </option>
-                                            <option value=7>FTTH - (FC) - Iluminacion de CAJA</option>
-                                            <option value=8>FTTH - (FC + SC) - Iluminacion + Empalme</option>
-                                            <option value=9>FTTH - Extension de Red</option>
-                                            <option value=10>FTTH - Reforma Civil</option>
+                                            <option value=6>HFC - Extension de Red</option>
+                                            <option value=7>HFC - Cambio del PowerBlocking</option>
+                                            <option value=8>HFC - Problemas con el plano de red</option>
+                                            <option disabled value="">---------------------------------------------
+                                            </option>
+                                            <option value=9>FTTH - (SC) - Detalle de Empalme </option>
+                                            <option value=10>FTTH - (FC) - Iluminacion de CAJA</option>
+                                            <option value=11>FTTH - (FC + SC) - Iluminacion + Empalme</option>
+                                            <option value=12>FTTH - Extension de Red</option>
+                                            <option value=13>FTTH - Reforma Civil</option>
                                         </select>
                                         <div class="invalid-tooltip">
                                             ¡Debes Seleccionar el Tipo de Reforma!
@@ -105,8 +110,8 @@
                                     <div class="col-3">
                                         <select id="ARMADO" class="form-select" required>
                                             <option selected disabled value="">Seleccione una opcion</option>
-                                            <option value="1">EXTERIOR</option>
-                                            <option value="2">MONTANTE</option>
+                                            <option value="EXTERIOR">EXTERIOR</option>
+                                            <option value="MONTANTE">MONTANTE</option>
                                         </select>
                                         <div class="invalid-tooltip">
                                             ¡Debes Seleccionar el Tipo de Armado a realizar en el Edif!
@@ -301,7 +306,6 @@
                             </div>
                         </div>
 
-
                     </section>
 
                     <section id="InForFTTH" class="row g-2 d-block">
@@ -363,7 +367,7 @@
                                         <div class="invalid-tooltip">
                                             ¡Debes ingresar la Dirección del Poste o columna!
                                         </div>
-                                        <button class="btn btn-secondary" type="button" id="SUGERIR">Sugerir</button>
+                                        <button class="btn btn-secondary" type="button" id="SUGERIR1">Sugerir</button>
                                     </div>
                                 </div>
                             </div>
@@ -457,19 +461,19 @@
 
             </div>
 
-
+            <!--------------------------------------------------------------------------------------------------------------------------------------------------->
             <div class="col-md-5 pt-3 pb-5" style="background-color: #979EB8;">
 
                 <div class="row">
                     <div class="col-12 position-relative">
                         <div class="row">
-                            <label for="inputPassword" class="col-sm-12 col-form-label fw-bold text-start">Cuerpo del
+                            <label for="TEXTO" class="col-sm-12 col-form-label fw-bold text-start">Cuerpo del
                                 Ticket:</label>
                             <div class="col-sm-10 offset-sm-1">
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="15"></textarea>
+                                <textarea class="form-control" id="TEXTO" rows="15"></textarea>
                             </div>
                             <div class="col-sm-10 offset-sm-1 d-grid gap-2">
-                                <button type="submit" class="btn btn-success">COPIAR</button>
+                                <button type="button" class="btn btn-success" id="COPIAR1">COPIAR</button>
 
                             </div>
                         </div>
@@ -480,7 +484,7 @@
                     <div class="col-12 position-relative">
                         <div class="input-group">
                             <div class="col-sm-5  offset-sm-1">
-                                <input type="text" class="form-control" placeholder="Ingresar el Numero de Tkt" id="ID">
+                                <input type="text" class="form-control" placeholder="Ingresar el Numero de Tkt">
                             </div>
                             <div class="col-sm-5">
                                 <select class="form-select">
@@ -497,7 +501,8 @@
 
                 <div class="row mt-3">
                     <div class="col-sm-10 offset-sm-1">
-                        <input type="text" class="form-control col-sm-5" aria-describedby="BUSCAR" id="ID" required>
+                        <input type="text" class="form-control col-sm-5" aria-describedby="BUSCAR" id="ID898989"
+                            required>
                     </div>
                     <div class="col-sm-10 offset-sm-1 d-grid gap-2">
                         <button type="submit" class="btn btn-success">COPIAR</button>
@@ -512,7 +517,7 @@
         </div>
 
         <div class="row" style="background-color: #335EFF;">
-            <!------------------------------------------ FOOTER ------------------------------>
+            <!--------------------------------------- FOOTER ------------------------->
             <div class="col align-self-center">
                 <div class="row mt-3">
                     <div class="col-sm-12 ">
@@ -521,10 +526,11 @@
                     </div>
                     <div class="row mt-">
                         <div class="col-sm-6 offset-sm-3">
-                            <h5 style="color:white">By Ing. Ignacio Velazquez</h5>
+                            <h6 style="color:white">By Ing. Ignacio Velazquez</h6>
+                            <h6 style="color:white">jvelazquez@gdp.com.ar</h6>
                         </div>
                         <div class="col-sm-1 offset-sm-2">
-                            <h5 style="color:white">V2.0</h5>
+                            <h5 style="color:white">V1.0</h5>
                         </div>
                     </div>
                 </div>
@@ -534,8 +540,7 @@
 
 
 
-        <script src="./GAS_SOLICITUD_REFORMA_2022.js"></script>
-        <?!= include('JavaScript'); ?>
+        <script src="./JavaScript.html.js"></script>
         <!---------- Para GAS ---------------------->
 </body>
 

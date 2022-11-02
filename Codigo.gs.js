@@ -1,3 +1,6 @@
+/*
+
+
 function buscarID(id) {
   const libro = SpreadsheetApp.openById("1iyba6EH-qooC6mA3jMy1NDFpf42bwcx1Uip-tGwsvT4");
   const Hoja = libro.getSheetByName("GESTIONES");
@@ -39,3 +42,5 @@ function Escribir(id, formato) {
   }
 }
 
+
+*/
