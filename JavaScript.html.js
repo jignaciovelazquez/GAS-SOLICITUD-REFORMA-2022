@@ -24,6 +24,8 @@
 
 //Variables
 let rotar = 0;
+let mensaje = "";
+let motivo = "";
 
 
 
@@ -45,30 +47,35 @@ document.getElementById("TOP").addEventListener('change', () => {
     document.getElementById("ARMADO").disabled = false;
 
 
-    if (document.getElementById("TIPO").value >= 9) {
+    if (document.getElementById("TIPO").value >= 12) {
 
         let Tipo = document.getElementById("TIPO").value;
 
-        if (Tipo == 9) {
-            ModoFTTH();
-        }
-        if (Tipo == 10) {
-            ModoFTTH();
-        }
-        if (Tipo == 11) {
-            ModoFTTH();
-        }
         if (Tipo == 12) {
             ModoFTTH();
+            motivo = " Detalle de Empalme FTTH";
         }
         if (Tipo == 13) {
             ModoFTTH();
+            motivo = " Iluminacion de Caja FTTH";
+        }
+        if (Tipo == 14) {
+            ModoFTTH();
+            motivo = " Iluminacion + Empalme FTTH";
+        }
+        if (Tipo == 15) {
+            ModoFTTH();
+            motivo = " Extension de RED FTTH";
+        }
+        if (Tipo == 16) {
+            ModoFTTH();
+            motivo = " Reforma civil FTTH";
         }
 
         return
     }
 
-    if ((document.getElementById("TIPO").value <= 8) && (document.getElementById("FRECUENCIA").value != "") && (document.getElementById("ARMADO").value != "")) {
+    if ((document.getElementById("TIPO").value <= 11) && (document.getElementById("FRECUENCIA").value != "") && (document.getElementById("ARMADO").value != "")) {
 
         let Tipo = document.getElementById("TIPO").value;
         let Armado = document.getElementById("ARMADO").value;
@@ -78,59 +85,104 @@ document.getElementById("TOP").addEventListener('change', () => {
             document.getElementById("FRECUENCIA").value = "1"
             OcultarAMPLIFICADOR();
             OcultarVALORES();
+            motivo = " No hay Hot Tap disponible ";
+            mensaje = " (CONDICIONANTE PARA GENERAR TICKET: ADJUNTAR EXTRACTO DE PLANO DEL SERVIDOR INDICANDO EL LOTE Y COLUMNA/POSTE A REALIZAR LA REFORMA) ";
         }
         if ((Tipo == 2) && (Armado == "EXTERIOR")) {
             ModoHFC();
-            document.getElementById("FRECUENCIA").value = "2"
+            document.getElementById("FRECUENCIA").value = "2";
             OcultarTAPA();
             OcultarVALORES();
+            motivo = " FALTA REDUCCIÓN EDIFICIO NO CONTEMPLADO ";
+            mensaje = " (CONDICIONANTE PARA GENERAR TICKET: ADJUNTAR EXTRACTO DE PLANO DEL SERVIDOR INDICANDO EL LOTE Y COLUMNA/POSTE A REALIZAR LA REFORMA) ";
         }
         if ((Tipo == 2) && (Armado == "MONTANTE")) {
             ModoHFC();
-            document.getElementById("FRECUENCIA").value = "2"
+            document.getElementById("FRECUENCIA").value = "2";
             OcultarTAPA();
+            motivo = " FALTA REDUCCIÓN EDIFICIO NO CONTEMPLADO ";
+            mensaje = " (CONDICIONANTE PARA GENERAR TICKET: ADJUNTAR EXTRACTO DE PLANO DEL SERVIDOR INDICANDO EL LOTE Y COLUMNA/POSTE A REALIZAR LA REFORMA) ";
         }
         if ((Tipo == 3) && (Armado == "EXTERIOR")) {
             ModoHFC();
             OcultarTAPA();
             OcultarVALORES();
+            motivo = " ZONA HOT TAP SIN TOMA 220V DISPONIBLE EN EL EDIFICIO ";
+            mensaje = " (CONDICIONANTE PARA GENERAR TICKET: ADJUNTAR EXTRACTO DE PLANO DEL SERVIDOR INDICANDO EL LOTE Y COLUMNA/POSTE A REALIZAR LA REFORMA) ";
         }
         if ((Tipo == 3) && (Armado == "MONTANTE")) {
             ModoHFC();
             OcultarTAPA();
+            motivo = " ZONA HOT TAP SIN TOMA 220V DISPONIBLE EN EL EDIFICIO ";
+            mensaje = " (CONDICIONANTE PARA GENERAR TICKET: ADJUNTAR EXTRACTO DE PLANO DEL SERVIDOR INDICANDO EL LOTE Y COLUMNA/POSTE A REALIZAR LA REFORMA) ";
         }
         if ((Tipo == 4) && (Armado == "EXTERIOR")) {
             ModoHFC();
             OcultarTAPA();
             OcultarVALORES();
+            motivo = " Niveles fuera de rango";
+            mensaje = "";
         }
         if ((Tipo == 4) && (Armado == "MONTANTE")) {
             ModoHFC();
             OcultarTAPA();
+            motivo = " Niveles fuera de rango";
+            mensaje = "";
         }
         if ((Tipo == 5) && (Armado == "EXTERIOR")) {
             ModoHFC();
             OcultarTAPA();
             OcultarVALORES();
+            motivo = " Reforma Civil";
+            mensaje = " (CONDICIONANTE PARA GENERAR TICKET: ADJUNTAR EXTRACTO DE PLANO DEL SERVIDOR INDICANDO LA REFORMA CIVIL A REALIZAR) ";
         }
         if ((Tipo == 5) && (Armado == "MONTANTE")) {
             ModoHFC();
             OcultarTAPA();
+            motivo = " Reforma Civil";
+            mensaje = " (CONDICIONANTE PARA GENERAR TICKET: ADJUNTAR EXTRACTO DE PLANO DEL SERVIDOR INDICANDO LA REFORMA CIVIL A REALIZAR) ";
         }
         if ((Tipo == 6) && (Armado == "EXTERIOR")) {
             ModoHFC();
             OcultarTAPA();
             OcultarVALORES();
+            motivo = " Colocación de Columnas y Postes";
+            mensaje = " (CONDICIONANTE PARA GENERAR TICKET: ADJUNTAR EXTRACTO DE PLANO DEL SERVIDOR INDICANDO EL LOTE DE INTERES, COLUMNA/POSTE A REEMPLAZAR O INDICAR ZONA A POSTEAR) ";
         }
         if ((Tipo == 7) && (Armado == "EXTERIOR")) {
             ModoHFC();
             OcultarTAPA();
             OcultarVALORES();
+            motivo = " EDIFICIO EN ZONA HATCH";
+            mensaje = " (CONDICIONANTE PARA GENERAR TICKET: ANTES DE GENERAR EL TICKET SE DEBE REALIZAR RELEVAMIENTO DE LA ZONA. DICHO RELEVAMIENTO SE DEBE ADJUNTAR AL TICKET EN UN CROQUIS INDICANDO LOTE A REALIZAR LA REFORMA Y SI HAY APOYOS EXISTENTES O SI HAY QUE COLOCAR APOYOS, TENIENDO EN CUENTA SI LA RED DEBE REALIZAR UN CRUCE, Y TODO LO NECESARIO PARA REALIZAR LA REFORMA) ";
         }
         if ((Tipo == 8) && (Armado == "EXTERIOR")) {
             ModoHFC();
             OcultarTAPA();
             OcultarVALORES();
+            motivo = " EDIFICIO FUERA DE NODO";
+            mensaje = " (CONDICIONANTE PARA GENERAR TICKET: ANTES DE GENERAR EL TICKET SE DEBE REALIZAR RELEVAMIENTO DE LA ZONA. DICHO RELEVAMIENTO SE DEBE ADJUNTAR AL TICKET EN UN CROQUIS INDICANDO LOTE A REALIZAR LA REFORMA Y SI HAY APOYOS EXISTENTES O SI HAY QUE COLOCAR APOYOS, TENIENDO EN CUENTA SI LA RED DEBE REALIZAR UN CRUCE, Y TODO LO NECESARIO PARA REALIZAR LA REFORMA) ";
+        }
+        if ((Tipo == 9) && (Armado == "EXTERIOR")) {
+            ModoHFC();
+            OcultarTAPA();
+            OcultarVALORES();
+            motivo = " No hay Linga (Edificio ya contemplado)";
+            mensaje = " (CONDICIONANTE PARA GENERAR TICKET: ADJUNTAR EXTRACTO DE PLANO DEL SERVIDOR INDICANDO EL LOTE Y COLUMNA/POSTE A REALIZAR LA REFORMA) ";
+        }
+        if ((Tipo == 10) && (Armado == "EXTERIOR")) {
+            ModoHFC();
+            OcultarTAPA();
+            OcultarVALORES();
+            motivo = " Cambio del PowerBlocking";
+            mensaje = "";
+        }
+        if ((Tipo == 11) && (Armado == "EXTERIOR")) {
+            ModoHFC();
+            OcultarTAPA();
+            OcultarVALORES();
+            motivo = " Problemas con el plano de red";
+            mensaje = "";
         }
 
         return
@@ -167,7 +219,15 @@ document.getElementById("SUGERIR").addEventListener('click', () => {
 
 document.getElementById("GENERAR").addEventListener('click', () => {
 
-    let FORMATO = `Motivo: -------------\nDistribución: ${document.getElementById("ARMADO").value}\nID: ${document.getElementById("ID").value}\nCantidad de pisos: ${document.getElementById("PISOS").value}\nCantidad de UF: ${document.getElementById("UF").value}\nNodo: ${document.getElementById("NODO").value}\nDirección: ${document.getElementById("DIRECCION").value}\nEntre calles: ${document.getElementById("ENTRECALLE1").value.toUpperCase()} y ${document.getElementById("ENTRECALLE2").value.toUpperCase()}\nPoste: ${document.getElementById("POSTE").value}\nRG11: ${document.getElementById("METROS").value} metros\n`;
+    // Validar campos vacios
+
+    //pasar los valores de ID a VARIABLES
+
+    //depende del tipo generar el template
+
+    // depende del tipo indicar los pasos en MOICA (o probar hacerlo cuando cambia el tipo de TKT en TOP)
+
+    let FORMATO = `Motivo: ${motivo}\nDistribución: ${document.getElementById("ARMADO").value}\nID: ${document.getElementById("ID").value}\nCantidad de pisos: ${document.getElementById("PISOS").value}\nCantidad de UF: ${document.getElementById("UF").value}\nNodo: ${document.getElementById("NODO").value}\nDirección: ${document.getElementById("DIRECCION").value}\nEntre calles: ${document.getElementById("ENTRECALLE1").value.toUpperCase()} y ${document.getElementById("ENTRECALLE2").value.toUpperCase()}\nPoste: ${document.getElementById("POSTE").value}\nRG11: ${document.getElementById("METROS").value} metros\n`;
 
 
     document.getElementById("TEXTO").value = FORMATO;

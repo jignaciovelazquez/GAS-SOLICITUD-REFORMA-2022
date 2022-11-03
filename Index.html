@@ -41,7 +41,7 @@
 
         <div class="row">
             <!-- --------------------------------------BODY------------------------------------------------------------>
-            <div class="col-md-7 pt-3 pb-5" style="background-color: #C2CAE5;">
+            <div class="col-md-8 pt-3 pb-5" style="background-color: #C2CAE5;">
                 <!--<form onsubmit="alert('submit!');return false"></form>--->
                 <form class="row g-2 needs-validation" onsubmit="return false" novalidate>
 
@@ -78,20 +78,25 @@
                                         <select id="TIPO" class="form-select" required>
                                             <option value="" selected disabled>Seleccione una opcion</option>
                                             <option value=1>HFC - No hay Tap HOT disponible</option>
-                                            <option value=2>HFC - Edificio no contemplado</option>
-                                            <option value=3>HFC - No se puede tomar Tension</option>
-                                            <option value=4>HFC - Niveles fuera de rango</option>
+                                            <option value=2>HFC - Falta reducción, edificio no contemplado</option>
+                                            <option value=3>HFC - Zona Hot Tap sin toma 220V disponible en el edificio
+                                            </option>
                                             <option value=5>HFC - Reforma Civil</option>
-                                            <option value=6>HFC - Extension de Red</option>
-                                            <option value=7>HFC - Cambio del PowerBlocking</option>
-                                            <option value=8>HFC - Problemas con el plano de red</option>
+                                            <option value=4>HFC - Niveles fuera de rango</option>
+                                            <option value=6>HFC - Colocación de Columnas y Postes</option>
+                                            <option value=7>HFC - Edificio en zona HATCH</option>
+                                            <option value=8>HFC - Edificio fuera de nodo</option>
+                                            <option value=9>HFC - No hay Linga (Edificio ya contemplado)</option>
+                                            <option value=10>HFC - Cambio del PowerBlocking</option>
+                                            <option value=11>HFC - Problemas con el plano de red</option>
                                             <option disabled value="">---------------------------------------------
                                             </option>
-                                            <option value=9>FTTH - (SC) - Detalle de Empalme </option>
-                                            <option value=10>FTTH - (FC) - Iluminacion de CAJA</option>
-                                            <option value=11>FTTH - (FC + SC) - Iluminacion + Empalme</option>
-                                            <option value=12>FTTH - Extension de Red</option>
-                                            <option value=13>FTTH - Reforma Civil</option>
+                                            <option value=12>FTTH - (SC) - Detalle de Empalme </option>
+                                            <option value=13>FTTH - (FC) - Iluminacion de CAJA</option>
+                                            <option value=14>FTTH - (FC + SC) - Iluminacion + Empalme</option>
+                                            <option value=15>FTTH - Extension de Red</option>
+                                            <option value=16>FTTH - Reforma Civil</option>
+                                            <option value=16>FTTH - Gestion de Ampliacion</option>
                                         </select>
                                         <div class="invalid-tooltip">
                                             ¡Debes Seleccionar el Tipo de Reforma!
@@ -459,10 +464,11 @@
                 </form>
 
 
+
             </div>
 
             <!--------------------------------------------------------------------------------------------------------------------------------------------------->
-            <div class="col-md-5 pt-3 pb-5" style="background-color: #979EB8;">
+            <div class="col-md-4 pt-3 pb-5" style="background-color: #979EB8">
 
                 <div class="row">
                     <div class="col-12 position-relative">
@@ -515,6 +521,82 @@
 
             </div>
         </div>
+
+        <div class="row pt-3" style="background-color: #979EB8">
+
+            <div class="col-4 offset-4">
+                <p class="h2">PASOS EN MOICA</p>
+            </div>
+
+            <div class="col-12 pt-2">
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="input-group input-group-sm col mb-3">
+                            <span class="input-group-text">Sector Inicial</span>
+                            <input type="text" class="form-control" value="Armado de edificios"
+                                style="background-color: #FFFFFF;" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="input-group input-group-sm col mb-3">
+                            <span class="input-group-text">Asunto</span>
+                            <input type="text" class="form-control" value="Pedido de Reforma de Red para Edificios"
+                                style="background-color: #FFFFFF;" readonly>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="input-group input-group-sm col mb-3">
+                            <span class="input-group-text">Sector</span>
+                            <input type="text" class="form-control" value="Diseño de red"
+                                style="background-color: #FFFFFF;" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group input-group-sm col mb-3">
+                            <span class="input-group-text">Subsector</span>
+                            <input type="text" class="form-control" value="Edificios HFC"
+                                style="background-color: #FFFFFF;" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="input-group input-group-sm col mb-3">
+                            <span class="input-group-text">Cola</span>
+                            <input type="text" class="form-control"
+                                value="Diseño Edificios normalizado/armado reforma de red"
+                                style="background-color: #FFFFFF;" readonly>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-group input-group-sm col mb-3">
+                        <span class="input-group-text">Agregar Problema</span>
+                        <span class="input-group-text">-Problema-</span>
+                        <input type="text" class="form-control" value="YE-TKT A GENERAR"
+                            style="background-color: #FFFFFF;" readonly>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-group input-group-sm col mb-3">
+                        <span class="input-group-text">Zona de afectacion</span>
+                        <span class="input-group-text">Tipo Zona</span>
+                        <input type="text" class="form-control" value="Por Direccion" style="background-color: #FFFFFF;"
+                            readonly>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+
 
         <div class="row" style="background-color: #335EFF;">
             <!--------------------------------------- FOOTER ------------------------->
