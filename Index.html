@@ -43,7 +43,7 @@
             <!-- --------------------------------------BODY------------------------------------------------------------>
             <div class="col-md-8 pt-3 pb-5" style="background-color: #C2CAE5;">
                 <!--<form onsubmit="alert('submit!');return false"></form>--->
-                <form class="row g-2 needs-validation" onsubmit="return false" novalidate>
+                <form id="FORMULARIO" class="row g-2 needs-validation" onsubmit="return false" novalidate>
 
                     <div class="col-12 position-relative">
                         <div class="input-group">
@@ -65,7 +65,7 @@
                                             Solicitar</label>
                                     </div>
                                     <div class="col-3">
-                                        <label class="col col-form-label fw-bold text-start">Frecuencia</label>
+                                        <label class="col col-form-label fw-bold text-start">Tecnologia</label>
                                     </div>
                                     <div class="col-3">
                                         <label class="col col-form-label fw-bold text-start">Armado</label>
@@ -103,10 +103,10 @@
                                         </div>
                                     </div>
                                     <div class="col-3">
-                                        <select id="FRECUENCIA" class="form-select" required>
+                                        <select id="TECNOLOGIA" class="form-select" required>
                                             <option selected disabled value="">Seleccione una opcion</option>
-                                            <option value="1">750MHz</option>
-                                            <option value="2">1000MHz</option>
+                                            <option value="1">ZONA HOT TAP</option>
+                                            <option value="2">ZONA DE REDUCCIONES</option>
                                         </select>
                                         <div class="invalid-tooltip">
                                             ¡Debes Seleccionar el Tipo de Frecuencia de la Red!
@@ -262,8 +262,8 @@
                                 <div class="col-3">
                                     <select id="AMPLI" class="form-select" required>
                                         <option selected disabled value="">Seleccione</option>
-                                        <option value="1">SI</option>
-                                        <option value="2">NO</option>
+                                        <option value="SI">SI</option>
+                                        <option value="NO">NO</option>
                                     </select>
                                     <div class="invalid-tooltip">
                                         ¡Debes indicar si se necesita y es posible instalar amplificador 90v!
@@ -476,7 +476,7 @@
                             <label for="TEXTO" class="col-sm-12 col-form-label fw-bold text-start">Cuerpo del
                                 Ticket:</label>
                             <div class="col-sm-10 offset-sm-1">
-                                <textarea class="form-control" id="TEXTO" rows="15"></textarea>
+                                <textarea class="form-control" id="TEXTO" rows="18"></textarea>
                             </div>
                             <div class="col-sm-10 offset-sm-1 d-grid gap-2">
                                 <button type="button" class="btn btn-success" id="COPIAR1">COPIAR</button>
