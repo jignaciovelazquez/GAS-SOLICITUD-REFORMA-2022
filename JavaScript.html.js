@@ -44,6 +44,32 @@ window.addEventListener('DOMContentLoaded', () => {
 //Eventos
 
 
+document.getElementById("BUSCAR").addEventListener('click', () => {
+
+    document.getElementById("BUSCAR").disabled = true;
+    setTimeout(function () {
+        //window.alert("Gestión cargada correctamente");
+        document.getElementById("BUSCAR").disabled = false;
+    }, 2000);
+
+    if (document.getElementById("ID").value == "") {
+        window.alert("Debes ingresar un numero de ID");
+        return
+    }
+    let ID = document.getElementById("ID").value;
+    google.script.run.withSuccessHandler(function (output) {
+        document.getElementById("DIRECCION").value = output[1];
+        document.getElementById("NODO").value = output[0];
+
+        if ((document.getElementById("DIRECCION").value == "") && (document.getElementById("NODO").value == "")) {
+            window.alert(`El ID: ${ID} no fue ubicado dentro de la Planilla de Produccion`);
+            return
+        }
+    }).buscarID(ID);
+
+})
+
+
 document.getElementById("TOP").addEventListener('change', () => {
 
     document.getElementById("TECNOLOGIA").disabled = false;

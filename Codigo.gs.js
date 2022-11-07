@@ -1,7 +1,21 @@
 /*
 
 
-function buscarID(id) {
+function doGet() {
+  var html = HtmlService.createTemplateFromFile('Index.html').evaluate()
+  .setTitle("Reformas")
+  .setFaviconUrl("https://cdn.iconscout.com/icon/free/png-512/r-characters-character-alphabet-letter-36029.png");
+  return html
+
+}
+
+function include(filename) {
+  return HtmlService.createHtmlOutputFromFile(filename)
+    .getContent()
+
+}
+
+function buscarID(id){
   const libro = SpreadsheetApp.openById("1iyba6EH-qooC6mA3jMy1NDFpf42bwcx1Uip-tGwsvT4");
   const Hoja = libro.getSheetByName("GESTIONES");
   const Hoja2 = libro.getSheetByName("Online");
@@ -12,22 +26,22 @@ function buscarID(id) {
 
 
 
-
-  for (i = 1; i <= UltimaFila1; i++) {
-    if (Hoja.getRange(i, 1).getValue() == id) {
-      let dir = Hoja.getRange(i, 3).getValue();
-      let nod = Hoja.getRange(i, 2).getValue();
-      return [nod, dir];
+  
+  for(i=1;i<=UltimaFila1;i++){
+    if (Hoja.getRange(i,1).getValue()==id){
+      let dir = Hoja.getRange(i,3).getValue();
+      let nod = Hoja.getRange(i,2).getValue();
+      return [nod,dir];
     }
   }
-  for (i = 1; i <= UltimaFila2; i++) {
-    if (Hoja2.getRange(i, 3).getValue() == id) {
-      let dir = Hoja2.getRange(i, 5).getValue();
-      let nod = Hoja2.getRange(i, 4).getValue();
-      return [nod, dir];
+  for(i=UltimaFila2;i>=1;i--){
+    if (Hoja2.getRange(i,3).getValue()==id){
+      let dir = Hoja2.getRange(i,5).getValue();
+      let nod = Hoja2.getRange(i,4).getValue();
+      return [nod,dir];
     }
   }
-  return ["", ""]
+  return ["",""]
 }
 
 function Escribir(id, formato) {
