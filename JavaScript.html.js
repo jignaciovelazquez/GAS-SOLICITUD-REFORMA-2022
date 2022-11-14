@@ -72,6 +72,7 @@ document.getElementById("BUSCAR").addEventListener('click', () => {
 
 document.getElementById("TOP").addEventListener('change', () => {
 
+
     document.getElementById("TECNOLOGIA").disabled = false;
     document.getElementById("ARMADO").disabled = false;
     document.getElementById("POSTE").disabled = false;
@@ -103,7 +104,6 @@ document.getElementById("TOP").addEventListener('change', () => {
             motivo = " Reforma civil FTTH";
         }
 
-        return
     }
 
     if ((document.getElementById("TIPO").value <= 11) && (document.getElementById("TECNOLOGIA").value != "") && (document.getElementById("ARMADO").value != "")) {
@@ -307,7 +307,6 @@ document.getElementById("TOP").addEventListener('change', () => {
             document.getElementById("PROBLEMA").value = "YE - Armado/Normalizado HFC - Falta Reducción";
         }
 
-        return
     }
 
 })
@@ -375,8 +374,6 @@ document.getElementById("FORMULARIO").addEventListener('submit', () => {
             datoTECNOLOGIA = "ZONA HOT TAP";
         } else { datoTECNOLOGIA = "ZONA DE REDUCCIONES"; }
 
-
-
         switch (tipoTKT) {
             case "NoHayTapHot":
                 FORMATO = `Motivo: ${motivo}\nID: ${datoID}\nCantidad de pisos: ${datoPISOS}\nCantidad de UF: ${datoUF}\nNodo: ${datoNODO}\nDirección ${datoDIRECCION}\nEntre calles: ${datoENTRECALLE1} y ${datoENTRECALLE2}\nPoste: ${datoPOSTE}\nRG11 (mtrs): ${datoMETROS}\nCapacidad de Tap Hot: ${datoTAPHOT}\n`;
@@ -387,7 +384,7 @@ document.getElementById("FORMULARIO").addEventListener('submit', () => {
                 break;
             case "ComunMontante":
                 FORMATO = `Motivo: ${motivo}\nDistribución: ${datoDISTRIBUCION}\nID: ${datoID}\nCantidad de pisos: ${datoPISOS}\nCantidad de UF: ${datoUF}\nNodo: ${datoNODO}\nDirección ${datoDIRECCION}\nEntre calles: ${datoENTRECALLE1} y ${datoENTRECALLE2}\nPoste: ${datoPOSTE}\nRG11 (mtrs): ${datoMETROS}\nDisponibilidad para instalar Amplificador 90 [V]: ${datoAMPLI}\nValores que debe entregar la red:\nCH116: ${datoCH116}\nCH3: ${datoCH3}\nRETORNO: ${datoRETORNO}\n`;
-
+                break;
             case "EspecialZonaTapHot":
                 FORMATO = `Motivo: ${motivo}\nTecnología: ${datoTECNOLOGIA}\nDistribución: ${datoDISTRIBUCION}\nID: ${datoID}\nCantidad de pisos: ${datoPISOS}\nCantidad de UF: ${datoUF}\nNodo: ${datoNODO}\nDirección ${datoDIRECCION}\nEntre calles: ${datoENTRECALLE1} y ${datoENTRECALLE2}\nPoste: ${datoPOSTE}\nRG11 (mtrs): ${datoMETROS}\nCapacidad de Tap Hot: ${datoTAPHOT}\nDisponibilidad para instalar Amplificador 90 [V]: ${datoAMPLI}\nObservaciones: ${datoOBS}\n`;
                 break;
