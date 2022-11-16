@@ -355,13 +355,13 @@
 
                         <div class="col-12 position-relative">
                             <div class="row">
-                                <label for="inputPassword" class="col-4 col-form-label text-start">Cantidad de
+                                <label for="PISOSFTTH" class="col-4 col-form-label text-start">Cantidad de
                                     Pisos:</label>
                                 <div class="col-5">
-                                    <input type="text" class="form-control" id="NODO" placeholder="Ingrese el Nodo"
-                                        required>
+                                    <input type="number" class="form-control" id="PISOSFTTH"
+                                        placeholder="Ingrese la cantidad de pisos del edif" required>
                                     <div class="invalid-tooltip">
-                                        ¡Debes ingresar el Nodo!
+                                        ¡Debes ingresar la cantidad de pisos del edif considerando PB!
                                     </div>
                                 </div>
                             </div>
@@ -369,13 +369,13 @@
 
                         <div class="col-12 position-relative">
                             <div class="row">
-                                <label for="inputPassword" class="col-4 col-form-label text-start">Cantidad de
+                                <label for="UFFTTH" class="col-4 col-form-label text-start">Cantidad de
                                     UF:</label>
                                 <div class="col-5">
-                                    <input type="text" class="form-control" id="NODO" placeholder="Ingrese el Nodo"
-                                        required>
+                                    <input type="number" class="form-control" id="UFFTTH"
+                                        placeholder="Ingrese la cantidad de UF del edif" required>
                                     <div class="invalid-tooltip">
-                                        ¡Debes ingresar el Nodo!
+                                        ¡Debes ingresar la cantidad de UF del edif!
                                     </div>
                                 </div>
                             </div>
@@ -383,34 +383,13 @@
 
                         <div class="col-12 position-relative">
                             <div class="row">
-                                <label for="inputPassword" class="col-4 col-form-label text-start">Recorrido
+                                <label for="MTSFTTH" class="col-4 col-form-label text-start">Recorrido
                                     Interno:</label>
                                 <div class="col-5">
-                                    <input type="text" class="form-control" id="NODO" placeholder="Ingrese el Nodo"
-                                        required>
+                                    <input type="number" class="form-control" id="MTSFTTH"
+                                        placeholder="Ingrese los Mts de Fibra del Recorrido Interno" required>
                                     <div class="invalid-tooltip">
-                                        ¡Debes ingresar el Nodo!
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="col-12 position-relative pt-1">
-                            <div class="row">
-                                <label for="inputPassword" class="col-4 col-form-label text-start">Caja
-                                    Cercana:</label>
-                                <div class="col-5">
-                                    <div class="input-group">
-                                        <div class="col">
-                                            <input type="text" class="form-control"
-                                                placeholder="Ingresar la Caja de Donde Tomara el Edif"
-                                                aria-label="Ingrese el ID" aria-describedby="BUSCAR" id="ID" required>
-                                        </div>
-                                        <div class="invalid-tooltip">
-                                            ¡Debes ingresar la Dirección del Poste o columna!
-                                        </div>
-                                        <button class="btn btn-secondary" type="button" id="SUGERIR1">Sugerir</button>
+                                        ¡Debes ingresar la cantidad de Mts del Recorrido Interno!
                                     </div>
                                 </div>
                             </div>
@@ -418,16 +397,16 @@
 
                         <div class="col-12 position-relative">
                             <div class="row">
-                                <label for="inputPassword" class="col-4 col-form-label text-start">¿Edificio
+                                <label for="CONTEMPLADO" class="col-4 col-form-label text-start">¿Edificio
                                     Contemplado?:</label>
                                 <div class="col-3">
-                                    <select class="form-select">
+                                    <select id="CONTEMPLADO" class="form-select" required>
                                         <option selected disabled value="">Seleccione</option>
-                                        <option value="1">SI</option>
-                                        <option value="2">NO</option>
+                                        <option value="Si">SI</option>
+                                        <option value="No">NO</option>
                                     </select>
                                     <div class="invalid-tooltip">
-                                        ¡Debes ingresar el Nodo!
+                                        ¡Debes indicar si el Edificio esta contemplado o no!
                                     </div>
                                 </div>
                             </div>
@@ -437,29 +416,76 @@
                             <div class="row">
                                 <label for="inputPassword" class="col-sm-12 col-form-label fw-bold text-start">Fibras
                                     sugeridas para el armado</label>
-                                <div class="col-12 position-relative">
+
+
+                                <div class="col-12 position-relative pt-1">
+                                    <div class="row" id="CAJATOMA">
+                                        <div class="input-group">
+                                            <label for="CAJAFTTH" class="col-4 col-form-label text-start">Caja
+                                                desde donde toma el Edif:</label>
+                                            <div class="col-5">
+                                                <div class="input-group">
+                                                    <div class="col">
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Ingresar la Caja desde donde toma el Edif"
+                                                            id="CAJAFTTH" required>
+                                                    </div>
+                                                    <div class="invalid-tooltip">
+                                                        ¡Debes ingresar una Caja cercana!
+                                                    </div>
+                                                    <button class="btn btn-secondary" type="button"
+                                                        id="SUGERIR2">Sugerir</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row" id="CAJASUGERIDA">
+                                        <div class="input-group">
+                                            <label for="CAJAFTTH" class="col-4 col-form-label text-start">Caja
+                                                desde donde toma el Edif:</label>
+                                            <div class="col-5">
+                                                <div class="input-group">
+                                                    <div class="col">
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Ingresar la Caja desde donde toma el Edif"
+                                                            id="CAJAFTTH" required>
+                                                    </div>
+                                                    <div class="invalid-tooltip">
+                                                        ¡Debes ingresar una Caja cercana!
+                                                    </div>
+                                                    <button class="btn btn-secondary" type="button"
+                                                        id="SUGERIR2">Sugerir</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-12 position-relative pt-2">
                                     <div class="input-group">
                                         <div class="col-6">
-                                            <select class="form-select" required>
+                                            <select id="TIPOFIBRA" class="form-select" required>
                                                 <option selected disabled value="">Seleccione una opcion</option>
-                                                <option value="1">FC50</option>
-                                                <option value="1">FC100</option>
-                                                <option value="1">FC150</option>
-                                                <option value="1">FC200</option>
-                                                <option value="2">MPO100</option>
-                                                <option value="2">MPO150</option>
-                                                <option value="2">MPO200</option>
-                                                <option value="3">FOx12</option>
-                                                <option value="4">FOx48</option>
+                                                <option value="FC50">FC50</option>
+                                                <option value="FC100">FC100</option>
+                                                <option value="FC150">FC150</option>
+                                                <option value="FC200">FC200</option>
+                                                <option value="MPO100">MPO100</option>
+                                                <option value="MPO150">MPO150</option>
+                                                <option value="MPO200">MPO200</option>
+                                                <option value="FOx12">FOx12</option>
+                                                <option value="FOx48">FOx48</option>
                                             </select>
                                             <div class="invalid-tooltip">
-                                                ¡Debes Seleccionar el Tipo de Reforma!
+                                                ¡Debes Seleccionar la Fibra Sugerida para el Armado!
                                             </div>
                                         </div>
                                         <div class="col-3">
-                                            <input class="form-control" list="datalistOptions" id="exampleDataList"
+                                            <input class="form-control" list="datalistOptions4" id="NTIPOFIBRA"
                                                 placeholder="Seleccione">
-                                            <datalist id="datalistOptions">
+                                            <datalist id="datalistOptions4">
                                                 <option value="1">
                                                 <option value="2">
                                                 <option value="3">
@@ -467,7 +493,7 @@
                                                 <option value="5">
                                             </datalist>
                                             <div class="invalid-tooltip">
-                                                ¡Debes Seleccionar el Tipo de Tecnologia!
+                                                ¡Debes Indicar la Cantidad de Fibras Sugeridas!
                                             </div>
                                         </div>
                                     </div>

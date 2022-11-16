@@ -28,6 +28,7 @@ let mensaje = "";
 let motivo = "";
 let FORMATO = "";
 let tipoTKT = "";
+let N = 1;
 
 
 
@@ -84,8 +85,13 @@ document.getElementById("TOP").addEventListener('change', () => {
         let Tipo = document.getElementById("TIPO").value;
 
         if (Tipo == 12) {
+            tipoTKT = "FTTHsinFC";
             ModoFTTH();
             motivo = " Detalle de Empalme FTTH";
+            mensaje = "";
+            document.getElementById("EJEMPLO1").textContent = `SC.`;
+            document.getElementById("EJEMPLO2").textContent = `SC.`;
+            document.getElementById("PROBLEMA").value = "YE - Armado/Normalizado HFC - Falta Reducción";
         }
         if (Tipo == 13) {
             ModoFTTH();
@@ -337,6 +343,33 @@ document.getElementById("SUGERIR").addEventListener('click', () => {
     }
 })
 
+document.getElementById("SUGERIR2").addEventListener('click', () => {
+
+    document.getElementById("CAJAFTTH").value = document.getElementById("NODO").value + "-N01-H0" + N;
+    N++;
+    return;
+})
+
+document.getElementById("CONTEMPLADO").addEventListener('change', () => {
+
+    if (document.getElementById("CONTEMPLADO").value == "Si") {
+
+        MostrarCAJATOMA();
+        OcultarCAJASUGERIDA();
+
+
+    }
+
+    if (document.getElementById("CONTEMPLADO").value == "No") {
+
+        MostrarCAJASUGERIDA();
+        OcultarCAJATOMA();
+
+
+    }
+
+})
+
 document.getElementById("FORMULARIO").addEventListener('submit', () => {
 
 
@@ -368,6 +401,15 @@ document.getElementById("FORMULARIO").addEventListener('submit', () => {
         let datoRETORNO = document.getElementById("RETORNO").value;
         let datoOBS = document.getElementById("OBS").value;
         let datoDISTRIBUCION = document.getElementById("ARMADO").value;
+
+        let datoPISOSFTTH = document.getElementById("PISOSFTTH").value;
+        let datoUFFTTH = document.getElementById("UFFTTH").value;
+        let datoMTSFTTH = document.getElementById("MTSFTTH").value;
+        let datoCONTEMPLADO = document.getElementById("CONTEMPLADO").value;
+        let datoCAJAFTTH = document.getElementById("CAJAFTTH").value;
+        let datoTIPOFIBRA = document.getElementById("TIPOFIBRA").value;
+        let datoNTIPOFIBRA = document.getElementById("NTIPOFIBRA").value;
+
         let datoTECNOLOGIA = "";
 
         if (document.getElementById("TECNOLOGIA").value == 1) {
@@ -398,6 +440,10 @@ document.getElementById("FORMULARIO").addEventListener('submit', () => {
 
             case "NoHayLinga":
                 FORMATO = `Motivo: ${motivo}\nID: ${datoID}\nCantidad de pisos: ${datoPISOS}\nCantidad de UF: ${datoUF}\nNodo: ${datoNODO}\nDirección ${datoDIRECCION}\nEntre calles: ${datoENTRECALLE1} y ${datoENTRECALLE2}\nPoste: ${datoPOSTE}\nRG11 (mtrs): ${datoMETROS}\nObservaciones: ${datoOBS}\n`;
+                break;
+
+            case "FTTHsinFC":
+                FORMATO = `Motivo: ${motivo}\nID: ${datoID}\nCantidad de pisos: ${datoPISOSFTTH}\nCantidad de UF: ${datoUFFTTH}\nNodo: ${datoNODO}\nDirección ${datoDIRECCION}\n\n Para el Edificio en cuestión se solicita:\n*- El detalle de Empalme contemplando ${datoNTIPOFIBRA} ${datoTIPOFIBRA} desde la caja ${datoCAJAFTTH}.\n*- Se necesitan aproximadamente ${datoMTSFTTH} mts para el recorrido interno (desde fachada a caja a instalar).\n*- En plano de red el edificio ${datoCONTEMPLADO} esta contemplado.\n\n  \nObservaciones: ${datoOBS}\nNota: No se adjunta diseño ya que la complejidad del caso no lo requiere.\n`;
                 break;
 
         }
@@ -493,6 +539,26 @@ const OcultarAMPLIFICADOR = () => {
     document.getElementById("AMPLIFICADOR").classList.add("d-none");
 }
 
+const MostrarCAJATOMA = () => {
+    document.getElementById("CAJATOMA").classList.add("d-block");
+    document.getElementById("CAJATOMA").classList.remove("d-none");
+}
+
+const OcultarCAJATOMA = () => {
+    document.getElementById("CAJATOMA").classList.remove("d-block");
+    document.getElementById("CAJATOMA").classList.add("d-none");
+}
+
+const MostrarCAJASUGERIDA = () => {
+    document.getElementById("CAJASUGERIDA").classList.add("d-block");
+    document.getElementById("CAJASUGERIDA").classList.remove("d-none");
+}
+
+const OcultarCAJASUGERIDA = () => {
+    document.getElementById("CAJASUGERIDA").classList.remove("d-block");
+    document.getElementById("CAJASUGERIDA").classList.add("d-none");
+}
+
 const ModoFTTH = () => {
     document.getElementById("InForHFC").classList.remove("d-block");
     document.getElementById("InForHFC").classList.add("d-none");
@@ -500,6 +566,8 @@ const ModoFTTH = () => {
     document.getElementById("InForFTTH").classList.add("d-block");
     document.getElementById("TECNOLOGIA").disabled = true;
     document.getElementById("ARMADO").disabled = true;
+    OcultarCAJASUGERIDA();
+    OcultarCAJATOMA();
 }
 
 const Limpiar = () => {
@@ -555,4 +623,5 @@ function validarCampos() {
 
 
 }
+
 
