@@ -29,6 +29,8 @@ let motivo = "";
 let FORMATO = "";
 let tipoTKT = "";
 let N = 1;
+let M = 1;
+let T = 1;
 
 
 
@@ -82,34 +84,75 @@ document.getElementById("TOP").addEventListener('change', () => {
 
     if (document.getElementById("TIPO").value >= 12) {
 
+        ModoFTTH();
         let Tipo = document.getElementById("TIPO").value;
 
         if (Tipo == 12) {
-            tipoTKT = "FTTHsinFC";
-            ModoFTTH();
-            motivo = " Detalle de Empalme FTTH";
+            tipoTKT = "FTTHSC";
+            MostrarDATOSPARASC();
+            motivo = "Detalle de Empalme FTTH";
             mensaje = "";
-            document.getElementById("EJEMPLO1").textContent = `SC.`;
-            document.getElementById("EJEMPLO2").textContent = `SC.`;
+            document.getElementById("EJEMPLO1").textContent = "No requiere Observacion adicional";
             document.getElementById("PROBLEMA").value = "YE - Armado/Normalizado HFC - Falta Reducción";
         }
         if (Tipo == 13) {
-            ModoFTTH();
-            motivo = " Iluminacion de Caja FTTH";
+            tipoTKT = "FTTHFC";
+            MostrarCAJAPARAILUM();
+            motivo = "Iluminacion de Caja FTTH";
+            mensaje = "";
+            document.getElementById("MTSFTTH").disabled = true;
+            document.getElementById("CONTEMPLADO").disabled = true;
+            document.getElementById("EJEMPLO1").textContent = "No requiere Observacion adicional";
+            document.getElementById("PROBLEMA").value = "YE - Armado/Normalizado HFC - Falta Reducción";
         }
         if (Tipo == 14) {
-            ModoFTTH();
-            motivo = " Iluminacion + Empalme FTTH";
+            tipoTKT = "FTTHextensionRED";
+            motivo = "Extension de Red FTTH";
+            mensaje = "";
+            document.getElementById("MTSFTTH").disabled = true;
+            document.getElementById("CONTEMPLADO").disabled = true;
+            document.getElementById("OBS").value = "Para el edificio en cuestión se solicita contemplar la opción de extender la red sobre ";
+            document.getElementById("EJEMPLO1").textContent = "No requiere Observacion adicional";
+            document.getElementById("PROBLEMA").value = "YE - Armado/Normalizado HFC - Falta Reducción";
         }
         if (Tipo == 15) {
-            ModoFTTH();
-            motivo = " Extension de RED FTTH";
+            tipoTKT = "FTTHreformaCIVIL";
+            motivo = "FTTH - Reforma Civil";
+            mensaje = "";
+            document.getElementById("MTSFTTH").disabled = true;
+            document.getElementById("CONTEMPLADO").disabled = true;
+            document.getElementById("OBS").value = "Para el edificio en cuestión se solicita contemplar la ejecucion de una Obra Civil para ";
+            document.getElementById("EJEMPLO1").textContent = "No requiere Observacion adicional";
+            document.getElementById("PROBLEMA").value = "YE - Armado/Normalizado HFC - Falta Reducción";
         }
         if (Tipo == 16) {
-            ModoFTTH();
-            motivo = " Reforma civil FTTH";
+            tipoTKT = "FTTHampliacion";
+            motivo = "FTTH - Gestion de Ampliacion";
+            mensaje = "";
+            document.getElementById("MTSFTTH").disabled = true;
+            document.getElementById("CONTEMPLADO").disabled = true;
+            document.getElementById("OBS").value = "Para el edificio en cuestión se solicita contemplar la ejecucion de una Obra Civil para ";
+            document.getElementById("EJEMPLO1").textContent = "No requiere Observacion adicional";
+            document.getElementById("PROBLEMA").value = "YE - Armado/Normalizado HFC - Falta Reducción";
         }
-
+        if (Tipo == 17) {
+            tipoTKT = "FTTHarmadoSC";
+            MostrarDATOSPARASC();
+            motivo = "Detalle de Empalme FTTH para edificio ya Armado";
+            mensaje = "";
+            document.getElementById("EJEMPLO1").textContent = "No requiere Observacion adicional";
+            document.getElementById("PROBLEMA").value = "YE - Armado/Normalizado HFC - Falta Reducción";
+        }
+        if (Tipo == 18) {
+            tipoTKT = "FTTHarmadoFC";
+            MostrarCAJAPARAILUM();
+            motivo = "Iluminacion de Caja FTTH para edificio ya Armado";
+            mensaje = "";
+            document.getElementById("MTSFTTH").disabled = true;
+            document.getElementById("CONTEMPLADO").disabled = true;
+            document.getElementById("EJEMPLO1").textContent = "No requiere Observacion adicional";
+            document.getElementById("PROBLEMA").value = "YE - Armado/Normalizado HFC - Falta Reducción";
+        }
     }
 
     if ((document.getElementById("TIPO").value <= 11) && (document.getElementById("TECNOLOGIA").value != "") && (document.getElementById("ARMADO").value != "")) {
@@ -117,11 +160,10 @@ document.getElementById("TOP").addEventListener('change', () => {
         let Tipo = document.getElementById("TIPO").value;
         let Armado = document.getElementById("ARMADO").value;
         let tecno = document.getElementById("TECNOLOGIA").value;
-        MostrarOBSERVACIONES();
+        ModoHFC();
 
         if (Tipo == 1) {
             tipoTKT = "NoHayTapHot";
-            ModoHFC();
             document.getElementById("TECNOLOGIA").value = "1";
             OcultarAMPLIFICADOR();
             OcultarVALORES();
@@ -132,7 +174,6 @@ document.getElementById("TOP").addEventListener('change', () => {
         }
         if ((Tipo == 2) && (Armado == "EXTERIOR")) {
             tipoTKT = "ComunExterior";
-            ModoHFC();
             document.getElementById("TECNOLOGIA").value = "2";
             OcultarTAPA();
             OcultarVALORES();
@@ -143,7 +184,6 @@ document.getElementById("TOP").addEventListener('change', () => {
         }
         if ((Tipo == 2) && (Armado == "MONTANTE")) {
             tipoTKT = "ComunMontante";
-            ModoHFC();
             document.getElementById("TECNOLOGIA").value = "2";
             OcultarTAPA();
             motivo = " FALTA REDUCCIÓN EDIFICIO NO CONTEMPLADO ";
@@ -153,7 +193,6 @@ document.getElementById("TOP").addEventListener('change', () => {
         }
         if ((Tipo == 3) && (Armado == "EXTERIOR")) {
             tipoTKT = "ComunExterior";
-            ModoHFC();
             OcultarTAPA();
             OcultarVALORES();
             document.getElementById("TECNOLOGIA").value = "1";
@@ -165,7 +204,6 @@ document.getElementById("TOP").addEventListener('change', () => {
         }
         if ((Tipo == 3) && (Armado == "MONTANTE")) {
             tipoTKT = "ComunMontante";
-            ModoHFC();
             OcultarTAPA();
             document.getElementById("TECNOLOGIA").value = "1";
             motivo = " ZONA HOT TAP SIN TOMA 220V DISPONIBLE EN EL EDIFICIO ";
@@ -176,7 +214,6 @@ document.getElementById("TOP").addEventListener('change', () => {
         }
         if ((Tipo == 4) && (Armado == "EXTERIOR")) {
             tipoTKT = "ComunExterior";
-            ModoHFC();
             OcultarTAPA();
             OcultarVALORES();
             motivo = " Niveles fuera de rango";
@@ -187,7 +224,6 @@ document.getElementById("TOP").addEventListener('change', () => {
         }
         if ((Tipo == 4) && (Armado == "MONTANTE")) {
             tipoTKT = "ComunMontante";
-            ModoHFC();
             OcultarTAPA();
             motivo = " Niveles fuera de rango";
             mensaje = "";
@@ -197,7 +233,6 @@ document.getElementById("TOP").addEventListener('change', () => {
         }
         if ((Tipo == 5) && (tecno == "1")) {
             tipoTKT = "EspecialZonaTapHot";
-            ModoHFC();
             OcultarVALORES();
             motivo = " Reforma Civil";
             mensaje = " (CONDICIONANTE PARA GENERAR TICKET: ADJUNTAR EXTRACTO DE PLANO DEL SERVIDOR INDICANDO LA REFORMA CIVIL A REALIZAR) ";
@@ -208,7 +243,6 @@ document.getElementById("TOP").addEventListener('change', () => {
         }
         if ((Tipo == 5) && (tecno == "2")) {
             tipoTKT = "EspecialZonaReduccion";
-            ModoHFC();
             OcultarTAPA();
             OcultarVALORES();
             motivo = " Reforma Civil";
@@ -220,7 +254,6 @@ document.getElementById("TOP").addEventListener('change', () => {
         }
         if (Tipo == 6) {
             tipoTKT = "ColocacionColumnas";
-            ModoHFC();
             OcultarTAPA();
             OcultarAMPLIFICADOR();
             OcultarVALORES();
@@ -235,7 +268,6 @@ document.getElementById("TOP").addEventListener('change', () => {
         }
         if ((Tipo == 7) && (tecno == "1")) {
             tipoTKT = "EspecialZonaTapHot";
-            ModoHFC();
             OcultarVALORES();
             motivo = " EDIFICIO EN ZONA HATCH";
             mensaje = " (CONDICIONANTE PARA GENERAR TICKET: ANTES DE GENERAR EL TICKET SE DEBE REALIZAR RELEVAMIENTO DE LA ZONA. DICHO RELEVAMIENTO SE DEBE ADJUNTAR AL TICKET EN UN CROQUIS INDICANDO LOTE A REALIZAR LA REFORMA Y SI HAY APOYOS EXISTENTES O SI HAY QUE COLOCAR APOYOS, TENIENDO EN CUENTA SI LA RED DEBE REALIZAR UN CRUCE, Y TODO LO NECESARIO PARA REALIZAR LA REFORMA) ";
@@ -245,7 +277,6 @@ document.getElementById("TOP").addEventListener('change', () => {
         }
         if ((Tipo == 7) && (tecno == "2")) {
             tipoTKT = "EspecialZonaReduccion";
-            ModoHFC();
             OcultarTAPA();
             OcultarVALORES();
             motivo = " EDIFICIO EN ZONA HATCH";
@@ -256,7 +287,6 @@ document.getElementById("TOP").addEventListener('change', () => {
         }
         if ((Tipo == 8) && (tecno == "1")) {
             tipoTKT = "EspecialZonaTapHot";
-            ModoHFC();
             OcultarVALORES();
             motivo = " EDIFICIO FUERA DE NODO";
             mensaje = " (CONDICIONANTE PARA GENERAR TICKET: ANTES DE GENERAR EL TICKET SE DEBE REALIZAR RELEVAMIENTO DE LA ZONA. DICHO RELEVAMIENTO SE DEBE ADJUNTAR AL TICKET EN UN CROQUIS INDICANDO LOTE A REALIZAR LA REFORMA Y SI HAY APOYOS EXISTENTES O SI HAY QUE COLOCAR APOYOS, TENIENDO EN CUENTA SI LA RED DEBE REALIZAR UN CRUCE, Y TODO LO NECESARIO PARA REALIZAR LA REFORMA) ";
@@ -266,7 +296,6 @@ document.getElementById("TOP").addEventListener('change', () => {
         }
         if ((Tipo == 8) && (tecno == "2")) {
             tipoTKT = "EspecialZonaReduccion";
-            ModoHFC();
             OcultarTAPA();
             OcultarVALORES();
             motivo = " EDIFICIO FUERA DE NODO";
@@ -277,7 +306,6 @@ document.getElementById("TOP").addEventListener('change', () => {
         }
         if ((Tipo == 9) && (Armado == "EXTERIOR")) {
             tipoTKT = "NoHayLinga";
-            ModoHFC();
             OcultarTAPA();
             OcultarAMPLIFICADOR();
             OcultarVALORES();
@@ -290,7 +318,6 @@ document.getElementById("TOP").addEventListener('change', () => {
         }
         if ((Tipo == 10) && (Armado == "EXTERIOR")) {
             tipoTKT = "NoHayLinga";
-            ModoHFC();
             OcultarTAPA();
             OcultarVALORES();
             document.getElementById("TECNOLOGIA").value = "1";
@@ -302,7 +329,6 @@ document.getElementById("TOP").addEventListener('change', () => {
         }
         if (Tipo == 11) {
             tipoTKT = "NoHayLinga";
-            ModoHFC();
             OcultarTAPA();
             OcultarAMPLIFICADOR();
             OcultarVALORES();
@@ -350,6 +376,20 @@ document.getElementById("SUGERIR2").addEventListener('click', () => {
     return;
 })
 
+document.getElementById("SUGERIR3").addEventListener('click', () => {
+
+    document.getElementById("CAJASEGUNRELEVO").value = document.getElementById("NODO").value + "-N01-H0" + M;
+    M++;
+    return;
+})
+
+document.getElementById("SUGERIR4").addEventListener('click', () => {
+
+    document.getElementById("CAJAILUMINAR").value = document.getElementById("NODO").value + "-N01-H0" + T;
+    T++;
+    return;
+})
+
 document.getElementById("CONTEMPLADO").addEventListener('change', () => {
 
     if (document.getElementById("CONTEMPLADO").value == "Si") {
@@ -364,12 +404,28 @@ document.getElementById("CONTEMPLADO").addEventListener('change', () => {
 
         MostrarCAJASUGERIDA();
         OcultarCAJATOMA();
+        /*
+        document.getElementById("CAJASEGUNRELEVO").disabled = true;
+        document.getElementById("SUGERIR3").disabled = true;
+        */
 
 
     }
 
 })
+/*
+document.getElementById("CAJAENRELEVO").addEventListener('change', () => {
 
+    if (document.getElementById("CAJAENRELEVO").value == "Si") {
+
+        document.getElementById("CAJASEGUNRELEVO").disabled = false;
+        document.getElementById("SUGERIR3").disabled = false;
+
+
+    }
+
+})
+*/
 document.getElementById("FORMULARIO").addEventListener('submit', () => {
 
 
@@ -406,15 +462,51 @@ document.getElementById("FORMULARIO").addEventListener('submit', () => {
         let datoUFFTTH = document.getElementById("UFFTTH").value;
         let datoMTSFTTH = document.getElementById("MTSFTTH").value;
         let datoCONTEMPLADO = document.getElementById("CONTEMPLADO").value;
+        let notaCONTEMPLADO = "";
+        let datoNOTA = "Nota: No se adjunta diseño ya que la complejidad del caso no lo requiere.";
         let datoCAJAFTTH = document.getElementById("CAJAFTTH").value;
         let datoTIPOFIBRA = document.getElementById("TIPOFIBRA").value;
         let datoNTIPOFIBRA = document.getElementById("NTIPOFIBRA").value;
+        let datoCAJAENRELEVO = document.getElementById("CAJAENRELEVO").value;
+        let datoCAJASEGUNRELEVO = document.getElementById("CAJASEGUNRELEVO").value;
+        let datoCAJAILUMINAR = document.getElementById("CAJAILUMINAR").value;
+
+        let datoTKT = document.getElementById("TKT").value;
+        let tktPREVIO = "";
 
         let datoTECNOLOGIA = "";
 
         if (document.getElementById("TECNOLOGIA").value == 1) {
             datoTECNOLOGIA = "ZONA HOT TAP";
         } else { datoTECNOLOGIA = "ZONA DE REDUCCIONES"; }
+
+
+
+
+
+
+        if (datoCONTEMPLADO == "Si") {
+            notaCONTEMPLADO = ` desde la caja ${datoCAJAFTTH}`;
+        } else {
+            if (datoCAJAENRELEVO == "Si") {
+                notaCONTEMPLADO = ` desde el relavamiento indican que se encuentra la caja ${datoCAJASEGUNRELEVO} disponible.`;
+            } else {
+                notaCONTEMPLADO = ` desde el relavamiento NO indican caja disponible.`;
+            }
+
+        }
+
+
+        if (document.getElementById("inlineCheckbox1").checked == true) {
+            datoNOTA = "Nota: Se adjunta diseño.";
+        }
+
+        if (datoTKT != "") {
+            tktPREVIO = `Nota: Ticket generado en Moica ${datoTKT} Motivo Iluminacion CAJA - FTTH.\n`;
+        }
+
+
+
 
         switch (tipoTKT) {
             case "NoHayTapHot":
@@ -442,8 +534,32 @@ document.getElementById("FORMULARIO").addEventListener('submit', () => {
                 FORMATO = `Motivo: ${motivo}\nID: ${datoID}\nCantidad de pisos: ${datoPISOS}\nCantidad de UF: ${datoUF}\nNodo: ${datoNODO}\nDirección ${datoDIRECCION}\nEntre calles: ${datoENTRECALLE1} y ${datoENTRECALLE2}\nPoste: ${datoPOSTE}\nRG11 (mtrs): ${datoMETROS}\nObservaciones: ${datoOBS}\n`;
                 break;
 
-            case "FTTHsinFC":
-                FORMATO = `Motivo: ${motivo}\nID: ${datoID}\nCantidad de pisos: ${datoPISOSFTTH}\nCantidad de UF: ${datoUFFTTH}\nNodo: ${datoNODO}\nDirección ${datoDIRECCION}\n\n Para el Edificio en cuestión se solicita:\n*- El detalle de Empalme contemplando ${datoNTIPOFIBRA} ${datoTIPOFIBRA} desde la caja ${datoCAJAFTTH}.\n*- Se necesitan aproximadamente ${datoMTSFTTH} mts para el recorrido interno (desde fachada a caja a instalar).\n*- En plano de red el edificio ${datoCONTEMPLADO} esta contemplado.\n\n  \nObservaciones: ${datoOBS}\nNota: No se adjunta diseño ya que la complejidad del caso no lo requiere.\n`;
+            case "FTTHSC":
+                FORMATO = `Motivo: ${motivo}\nID: ${datoID}\nCantidad de pisos: ${datoPISOSFTTH}\nCantidad de UF: ${datoUFFTTH}\nNodo: ${datoNODO}\nDirección ${datoDIRECCION}\n\n*- Para el Edificio en cuestión se solicita el Detalle de Empalme.\n*- Se necesitan aproximadamente ${datoMTSFTTH} mts para el recorrido interno (desde fachada a caja a instalar, incluyendo 20m para el rollo de ganancia).\n*- En plano de red el edificio ${datoCONTEMPLADO} esta contemplado, ${notaCONTEMPLADO}.\n*- Se recomienda contemplar ${datoNTIPOFIBRA} ${datoTIPOFIBRA} para el diseño.\n\nObservaciones: ${datoOBS}\n\n${tktPREVIO}${datoNOTA}\n`;
+                break;
+
+            case "FTTHFC":
+                FORMATO = `Motivo: ${motivo}\nID: ${datoID}\nCantidad de pisos: ${datoPISOSFTTH}\nCantidad de UF: ${datoUFFTTH}\nNodo: ${datoNODO}\nDirección ${datoDIRECCION}\n\n*- Para el Edificio en cuestión se solicita la Iluminación de la caja ${datoCAJAILUMINAR} para realizar el respectivo armado.\n\nObservaciones: ${datoOBS}\n\n${datoNOTA}\n`;
+                break;
+
+            case "FTTHextensionRED":
+                FORMATO = `Motivo: ${motivo}\nID: ${datoID}\nCantidad de pisos: ${datoPISOSFTTH}\nCantidad de UF: ${datoUFFTTH}\nNodo: ${datoNODO}\nDirección ${datoDIRECCION}\n\nObservaciones: ${datoOBS}\n\n${datoNOTA}\n`;
+                break;
+
+            case "FTTHreformaCIVIL":
+                FORMATO = `Motivo: ${motivo}\nID: ${datoID}\nCantidad de pisos: ${datoPISOSFTTH}\nCantidad de UF: ${datoUFFTTH}\nNodo: ${datoNODO}\nDirección ${datoDIRECCION}\n\nObservaciones: ${datoOBS}\n\n${datoNOTA}\n`;
+                break;
+
+            case "FTTHampliacion":
+                FORMATO = `Motivo: ${motivo}\nID: ${datoID}\nCantidad de pisos: ${datoPISOSFTTH}\nCantidad de UF: ${datoUFFTTH}\nNodo: ${datoNODO}\nDirección ${datoDIRECCION}\n\nObservaciones: ${datoOBS}\n\n${datoNOTA}\n`;
+                break;
+
+            case "FTTHarmadoSC":
+                FORMATO = `Motivo: ${motivo}\nID: ${datoID}\nCantidad de pisos: ${datoPISOSFTTH}\nCantidad de UF: ${datoUFFTTH}\nNodo: ${datoNODO}\nDirección ${datoDIRECCION}\n\n*- Para la Gestion de Ampliacion se solicita el Detalle de Empalme.\n*- Se necesitan aproximadamente ${datoMTSFTTH} mts para el recorrido interno (desde fachada a caja a instalar, incluyendo 20m para el rollo de ganancia).\n*- En plano de red el edificio ${datoCONTEMPLADO} esta contemplado, ${notaCONTEMPLADO}.\n*- Se recomienda contemplar ${datoNTIPOFIBRA} ${datoTIPOFIBRA} para el diseño.\n\nObservaciones: ${datoOBS}\n\n${tktPREVIO}${datoNOTA}\n`;
+                break;
+
+            case "FTTHarmadoFC":
+                FORMATO = `Motivo: ${motivo}\nID: ${datoID}\nCantidad de pisos: ${datoPISOSFTTH}\nCantidad de UF: ${datoUFFTTH}\nNodo: ${datoNODO}\nDirección ${datoDIRECCION}\n\n*- Para la Gestion de Ampliacion se solicita la Iluminación de la caja ${datoCAJAILUMINAR} para realizar el respectivo armado.\n\nObservaciones: ${datoOBS}\n\n${datoNOTA}\n`;
                 break;
 
         }
@@ -512,6 +628,7 @@ const ModoHFC = () => {
     document.getElementById("VALORES").classList.remove("d-none");
     document.getElementById("AMPLIFICADOR").classList.add("d-block");
     document.getElementById("AMPLIFICADOR").classList.remove("d-none");
+    MostrarOBSERVACIONES();
 }
 
 const MostrarOBSERVACIONES = () => {
@@ -559,27 +676,72 @@ const OcultarCAJASUGERIDA = () => {
     document.getElementById("CAJASUGERIDA").classList.add("d-none");
 }
 
+const MostrarCAJAPARAILUM = () => {
+    document.getElementById("CAJAPARAILUM").classList.add("d-block");
+    document.getElementById("CAJAPARAILUM").classList.remove("d-none");
+}
+
+const OcultarCAJAPARAILUM = () => {
+    document.getElementById("CAJAPARAILUM").classList.remove("d-block");
+    document.getElementById("CAJAPARAILUM").classList.add("d-none");
+}
+
+const MostrarDATOSPARASC = () => {
+    document.getElementById("DATOSPARASC").classList.add("d-block");
+    document.getElementById("DATOSPARASC").classList.remove("d-none");
+}
+
+const OcultarDATOSPARASC = () => {
+    document.getElementById("DATOSPARASC").classList.remove("d-block");
+    document.getElementById("DATOSPARASC").classList.add("d-none");
+}
+
 const ModoFTTH = () => {
     document.getElementById("InForHFC").classList.remove("d-block");
     document.getElementById("InForHFC").classList.add("d-none");
     document.getElementById("InForFTTH").classList.remove("d-none");
     document.getElementById("InForFTTH").classList.add("d-block");
+    document.getElementById("TECNOLOGIA").value = "";
+    document.getElementById("ARMADO").value = "";
+    document.getElementById("OBS").value = "";
     document.getElementById("TECNOLOGIA").disabled = true;
     document.getElementById("ARMADO").disabled = true;
+    document.getElementById("MTSFTTH").disabled = false;
+    document.getElementById("CONTEMPLADO").disabled = false;
+    MostrarOBSERVACIONES();
     OcultarCAJASUGERIDA();
     OcultarCAJATOMA();
+    OcultarCAJAPARAILUM();
+    OcultarDATOSPARASC();
+
 }
 
 const Limpiar = () => {
     document.getElementById("ID").value = "";
+    document.getElementById("PISOS").value = "";
+    document.getElementById("UF").value = "";
     document.getElementById("NODO").value = "";
-    document.getElementById("NODO").value = "";
-    document.getElementById("NODO").value = "";
-    document.getElementById("NODO").value = "";
-    document.getElementById("NODO").value = "";
-    document.getElementById("NODO").value = "";
-    document.getElementById("NODO").value = "";
-    document.getElementById("NODO").value = "";
+    document.getElementById("DIRECCION").value = "";
+    document.getElementById("ENTRECALLE1").value = "";
+    document.getElementById("ENTRECALLE2").value = "";
+    document.getElementById("POSTE").value = "";
+    document.getElementById("METROS").value = "";
+    document.getElementById("TAPHOT").value = "";
+    document.getElementById("AMPLI").value = "";
+    document.getElementById("CH116").value = "";
+    document.getElementById("CH3").value = "";
+    document.getElementById("RETORNO").value = "";
+    document.getElementById("OBS").value = "";
+    document.getElementById("ARMADO").value = "";
+    document.getElementById("PISOSFTTH").value = "";
+    document.getElementById("UFFTTH").value = "";
+    document.getElementById("MTSFTTH").value = "";
+    document.getElementById("CONTEMPLADO").value = "";
+    document.getElementById("CAJAFTTH").value = "";
+    document.getElementById("TIPOFIBRA").value = "";
+    document.getElementById("NTIPOFIBRA").value = "";
+    document.getElementById("CAJAENRELEVO").value = "";
+    document.getElementById("CAJASEGUNRELEVO").value = "";
 }
 
 function validarCampos() {

@@ -131,10 +131,11 @@
                                             </option>
                                             <option value=12>FTTH - (SC) - Detalle de Empalme </option>
                                             <option value=13>FTTH - (FC) - Iluminacion de CAJA</option>
-                                            <option value=14>FTTH - (FC + SC) - Iluminacion + Empalme</option>
-                                            <option value=15>FTTH - Extension de Red</option>
-                                            <option value=16>FTTH - Reforma Civil</option>
+                                            <option value=14>FTTH - Extension de Red</option>
+                                            <option value=15>FTTH - Reforma Civil</option>
                                             <option value=16>FTTH - Gestion de Ampliacion</option>
+                                            <option value=17>FTTH - (SC) - Detalle de Empalme Edif ya ARMADO </option>
+                                            <option value=18>FTTH - (FC) - Iluminacion de CAJA Edif ya ARMADO</option>
                                         </select>
                                         <div class="invalid-tooltip">
                                             ¡Debes Seleccionar el Tipo de Reforma!
@@ -412,58 +413,32 @@
                             </div>
                         </div>
 
-                        <div class="col-12 position-relative">
+                        <div class="col-12 position-relative" id="CAJAPARAILUM">
+                            <div class="input-group">
+                                <label for="CAJAENRELEVO" class="col-4 col-form-label text-start">Caja que se debe
+                                    iluminar:</label>
+                                <div class="col-5">
+                                    <div class="input-group">
+                                        <div class="col">
+                                            <input type="text" class="form-control"
+                                                placeholder="Ingresar la Caja a Iluminar" id="CAJAILUMINAR" required>
+                                        </div>
+                                        <div class="invalid-tooltip">
+                                            ¡Debes ingresar la Caja a Iluminar!
+                                        </div>
+                                        <button class="btn btn-secondary" type="button" id="SUGERIR4">Sugerir</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 position-relative" id="DATOSPARASC">
                             <div class="row">
                                 <label for="inputPassword" class="col-sm-12 col-form-label fw-bold text-start">Fibras
                                     sugeridas para el armado</label>
 
 
                                 <div class="col-12 position-relative pt-1">
-                                    <div class="row" id="CAJATOMA">
-                                        <div class="input-group">
-                                            <label for="CAJAFTTH" class="col-4 col-form-label text-start">Caja
-                                                desde donde toma el Edif:</label>
-                                            <div class="col-5">
-                                                <div class="input-group">
-                                                    <div class="col">
-                                                        <input type="text" class="form-control"
-                                                            placeholder="Ingresar la Caja desde donde toma el Edif"
-                                                            id="CAJAFTTH" required>
-                                                    </div>
-                                                    <div class="invalid-tooltip">
-                                                        ¡Debes ingresar una Caja cercana!
-                                                    </div>
-                                                    <button class="btn btn-secondary" type="button"
-                                                        id="SUGERIR2">Sugerir</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row" id="CAJASUGERIDA">
-                                        <div class="input-group">
-                                            <label for="CAJAFTTH" class="col-4 col-form-label text-start">Caja
-                                                desde donde toma el Edif:</label>
-                                            <div class="col-5">
-                                                <div class="input-group">
-                                                    <div class="col">
-                                                        <input type="text" class="form-control"
-                                                            placeholder="Ingresar la Caja desde donde toma el Edif"
-                                                            id="CAJAFTTH" required>
-                                                    </div>
-                                                    <div class="invalid-tooltip">
-                                                        ¡Debes ingresar una Caja cercana!
-                                                    </div>
-                                                    <button class="btn btn-secondary" type="button"
-                                                        id="SUGERIR2">Sugerir</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="col-12 position-relative pt-2">
                                     <div class="input-group">
                                         <div class="col-6">
                                             <select id="TIPOFIBRA" class="form-select" required>
@@ -498,6 +473,76 @@
                                         </div>
                                     </div>
                                 </div>
+
+
+                                <div class="col-12 position-relative pt-2">
+                                    <div class="row" id="CAJATOMA">
+                                        <div class="input-group">
+                                            <label for="CAJAFTTH" class="col-4 col-form-label text-start">Caja
+                                                desde donde toma el Edif:</label>
+                                            <div class="col-5">
+                                                <div class="input-group">
+                                                    <div class="col">
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Ingresar la Caja desde donde toma el Edif"
+                                                            id="CAJAFTTH" required>
+                                                    </div>
+                                                    <div class="invalid-tooltip">
+                                                        ¡Debes ingresar una Caja desde donde toma el Edif!
+                                                    </div>
+                                                    <button class="btn btn-secondary" type="button"
+                                                        id="SUGERIR2">Sugerir</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row" id="CAJASUGERIDA">
+                                        <div class="input-group">
+                                            <label for="CAJAENRELEVO" class="col-4 col-form-label text-start">¿El
+                                                relevamiento sugiere caja con puertos disponibles?</label>
+                                            <div class="col-2">
+                                                <select id="CAJAENRELEVO" class="form-select" required>
+                                                    <option selected disabled value="">Seleccione</option>
+                                                    <option value="Si">SI</option>
+                                                    <option value="No">NO</option>
+                                                </select>
+                                                <div class="invalid-tooltip">
+                                                    ¡Debes indicar si el relevamiento sugiere una cja para conectar el
+                                                    Edif o no!
+                                                </div>
+                                            </div>
+                                            <div class="col-5">
+                                                <div class="input-group">
+                                                    <div class="col">
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Ingresar la Caja sugerida" id="CAJASEGUNRELEVO"
+                                                            required>
+                                                    </div>
+                                                    <div class="invalid-tooltip">
+                                                        ¡Debes ingresar la Caja sugerida!
+                                                    </div>
+                                                    <button class="btn btn-secondary" type="button"
+                                                        id="SUGERIR3">Sugerir</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-5 pt-2">
+                                    <div class="form-check form-check-inline form-switch">
+
+                                        <input class="form-check-input" type="checkbox" role="switch"
+                                            id="inlineCheckbox1" value="1">
+                                        <label class="form-check-label" for="inlineCheckbox1">¿Se Adjunta
+                                            Diseño?</label>
+
+                                    </div>
+                                </div>
+
+
                             </div>
                         </div>
 
