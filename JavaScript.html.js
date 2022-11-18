@@ -40,11 +40,22 @@ let T = 1;
 window.addEventListener('DOMContentLoaded', () => {
     //alert("Se cargo la pagina");
     ModoInicio();
+
+    const toast = new bootstrap.Toast(document.getElementById("liveToast"));
+    toast.show();
 })
 
 
 
 //Eventos
+
+
+
+
+
+
+
+
 
 
 document.getElementById("BUSCAR").addEventListener('click', () => {
@@ -127,11 +138,11 @@ document.getElementById("TOP").addEventListener('change', () => {
         }
         if (Tipo == 16) {
             tipoTKT = "FTTHampliacion";
+            MostrarDATOSPARASC();
             motivo = "FTTH - Gestion de Ampliacion";
             mensaje = "";
-            document.getElementById("MTSFTTH").disabled = true;
             document.getElementById("CONTEMPLADO").disabled = true;
-            document.getElementById("OBS").value = "Para el edificio en cuestión se solicita contemplar la ejecucion de una Obra Civil para ";
+            document.getElementById("OBS").value = "";
             document.getElementById("EJEMPLO1").textContent = "No requiere Observacion adicional";
             document.getElementById("PROBLEMA").value = "YE - Armado/Normalizado HFC - Falta Reducción";
         }
@@ -551,11 +562,11 @@ document.getElementById("FORMULARIO").addEventListener('submit', () => {
                 break;
 
             case "FTTHampliacion":
-                FORMATO = `Motivo: ${motivo}\nID: ${datoID}\nCantidad de pisos: ${datoPISOSFTTH}\nCantidad de UF: ${datoUFFTTH}\nNodo: ${datoNODO}\nDirección ${datoDIRECCION}\n\nObservaciones: ${datoOBS}\n\n${datoNOTA}\n`;
+                FORMATO = `Motivo: ${motivo}\nID: ${datoID}\nCantidad de pisos: ${datoPISOSFTTH}\nCantidad de UF: ${datoUFFTTH}\nNodo: ${datoNODO}\nDirección ${datoDIRECCION}\n\n*- Para la AMPLIACION de capacidad del Edificio en cuestión se solicita nuevo Detalle de Empalme.\n*- Se necesitan aproximadamente ${datoMTSFTTH} mts para el recorrido interno (desde fachada a caja a instalar, incluyendo 20m para el rollo de ganancia).\n*- Se recomienda contemplar ${datoNTIPOFIBRA} ${datoTIPOFIBRA} adicional a lo existente.\n\nObservaciones: ${datoOBS}\n\n${tktPREVIO}${datoNOTA}\n`;
                 break;
 
             case "FTTHarmadoSC":
-                FORMATO = `Motivo: ${motivo}\nID: ${datoID}\nCantidad de pisos: ${datoPISOSFTTH}\nCantidad de UF: ${datoUFFTTH}\nNodo: ${datoNODO}\nDirección ${datoDIRECCION}\n\n*- Para la Gestion de Ampliacion se solicita el Detalle de Empalme.\n*- Se necesitan aproximadamente ${datoMTSFTTH} mts para el recorrido interno (desde fachada a caja a instalar, incluyendo 20m para el rollo de ganancia).\n*- En plano de red el edificio ${datoCONTEMPLADO} esta contemplado, ${notaCONTEMPLADO}.\n*- Se recomienda contemplar ${datoNTIPOFIBRA} ${datoTIPOFIBRA} para el diseño.\n\nObservaciones: ${datoOBS}\n\n${tktPREVIO}${datoNOTA}\n`;
+                FORMATO = `Motivo: ${motivo}\nID: ${datoID}\nCantidad de pisos: ${datoPISOSFTTH}\nCantidad de UF: ${datoUFFTTH}\nNodo: ${datoNODO}\nDirección ${datoDIRECCION}\n\n*- Para el Edificio en cuestión se solicita el Detalle de Empalme.\n*- Se necesitan aproximadamente ${datoMTSFTTH} mts para el recorrido interno (desde fachada a caja a instalar, incluyendo 20m para el rollo de ganancia).\n*- En plano de red el edificio ${datoCONTEMPLADO} esta contemplado, ${notaCONTEMPLADO}.\n*- Se recomienda contemplar ${datoNTIPOFIBRA} ${datoTIPOFIBRA} para el diseño.\n\nObservaciones: ${datoOBS}\n\n${tktPREVIO}${datoNOTA}\n`;
                 break;
 
             case "FTTHarmadoFC":
