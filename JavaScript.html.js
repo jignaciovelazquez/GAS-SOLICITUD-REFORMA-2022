@@ -91,6 +91,7 @@ document.getElementById("TOP").addEventListener('change', () => {
     document.getElementById("ARMADO").disabled = false;
     document.getElementById("POSTE").disabled = false;
     document.getElementById("EJEMPLO2").textContent = "";
+    PasosMoicaFTTH();
 
 
     if (document.getElementById("TIPO").value >= 12) {
@@ -104,7 +105,8 @@ document.getElementById("TOP").addEventListener('change', () => {
             motivo = "Detalle de Empalme FTTH";
             mensaje = "";
             document.getElementById("EJEMPLO1").textContent = "No requiere Observacion adicional";
-            document.getElementById("PROBLEMA").value = "YE - Armado/Normalizado HFC - Falta Reducción";
+            document.getElementById("moicaAsunto").value = "Solicitud de Conexión de red FTTH";
+            document.getElementById("moicaProblema").value = "ARMADO - Conexción de Edficios a red FTTH";
         }
         if (Tipo == 13) {
             tipoTKT = "FTTHFC";
@@ -114,7 +116,8 @@ document.getElementById("TOP").addEventListener('change', () => {
             document.getElementById("MTSFTTH").disabled = true;
             document.getElementById("CONTEMPLADO").disabled = true;
             document.getElementById("EJEMPLO1").textContent = "No requiere Observacion adicional";
-            document.getElementById("PROBLEMA").value = "YE - Armado/Normalizado HFC - Falta Reducción";
+            document.getElementById("moicaAsunto").value = "Iluminación de FO para Caja HUB - edificios";
+            document.getElementById("moicaProblema").value = "ARMADO - Iluminación de FO para Caja Hub para Edificios";
         }
         if (Tipo == 14) {
             tipoTKT = "FTTHextensionRED";
@@ -124,7 +127,7 @@ document.getElementById("TOP").addEventListener('change', () => {
             document.getElementById("CONTEMPLADO").disabled = true;
             document.getElementById("OBS").value = "Para el edificio en cuestión se solicita contemplar la opción de extender la red sobre ";
             document.getElementById("EJEMPLO1").textContent = "No requiere Observacion adicional";
-            document.getElementById("PROBLEMA").value = "YE - Armado/Normalizado HFC - Falta Reducción";
+            document.getElementById("moicaProblema").value = "YE - Armado/Normalizado HFC - Falta Reducción";
         }
         if (Tipo == 15) {
             tipoTKT = "FTTHreformaCIVIL";
@@ -134,7 +137,7 @@ document.getElementById("TOP").addEventListener('change', () => {
             document.getElementById("CONTEMPLADO").disabled = true;
             document.getElementById("OBS").value = "Para el edificio en cuestión se solicita contemplar la ejecucion de una Obra Civil para ";
             document.getElementById("EJEMPLO1").textContent = "No requiere Observacion adicional";
-            document.getElementById("PROBLEMA").value = "YE - Armado/Normalizado HFC - Falta Reducción";
+            document.getElementById("moicaProblema").value = "YE - Armado/Normalizado HFC - Falta Reducción";
         }
         if (Tipo == 16) {
             tipoTKT = "FTTHampliacion";
@@ -144,7 +147,7 @@ document.getElementById("TOP").addEventListener('change', () => {
             document.getElementById("CONTEMPLADO").disabled = true;
             document.getElementById("OBS").value = "";
             document.getElementById("EJEMPLO1").textContent = "No requiere Observacion adicional";
-            document.getElementById("PROBLEMA").value = "YE - Armado/Normalizado HFC - Falta Reducción";
+            document.getElementById("moicaProblema").value = "YE - Armado/Normalizado HFC - Falta Reducción";
         }
         if (Tipo == 17) {
             tipoTKT = "FTTHarmadoSC";
@@ -152,7 +155,7 @@ document.getElementById("TOP").addEventListener('change', () => {
             motivo = "Detalle de Empalme FTTH para edificio ya Armado";
             mensaje = "";
             document.getElementById("EJEMPLO1").textContent = "No requiere Observacion adicional";
-            document.getElementById("PROBLEMA").value = "YE - Armado/Normalizado HFC - Falta Reducción";
+            document.getElementById("moicaProblema").value = "YE - Armado/Normalizado HFC - Falta Reducción";
         }
         if (Tipo == 18) {
             tipoTKT = "FTTHarmadoFC";
@@ -162,7 +165,7 @@ document.getElementById("TOP").addEventListener('change', () => {
             document.getElementById("MTSFTTH").disabled = true;
             document.getElementById("CONTEMPLADO").disabled = true;
             document.getElementById("EJEMPLO1").textContent = "No requiere Observacion adicional";
-            document.getElementById("PROBLEMA").value = "YE - Armado/Normalizado HFC - Falta Reducción";
+            document.getElementById("moicaProblema").value = "YE - Armado/Normalizado HFC - Falta Reducción";
         }
     }
 
@@ -172,6 +175,7 @@ document.getElementById("TOP").addEventListener('change', () => {
         let Armado = document.getElementById("ARMADO").value;
         let tecno = document.getElementById("TECNOLOGIA").value;
         ModoHFC();
+        PasosMoicaHFC();
 
         if (Tipo == 1) {
             tipoTKT = "NoHayTapHot";
@@ -181,7 +185,7 @@ document.getElementById("TOP").addEventListener('change', () => {
             motivo = " No hay Hot Tap disponible ";
             mensaje = " (CONDICIONANTE PARA GENERAR TICKET: ADJUNTAR EXTRACTO DE PLANO DEL SERVIDOR INDICANDO EL LOTE Y COLUMNA/POSTE A REALIZAR LA REFORMA) ";
             document.getElementById("EJEMPLO1").textContent = "No requiere Observacion adicional";
-            document.getElementById("PROBLEMA").value = "YE - Armado/Normalizado HFC - Colocación de Hot Tap";
+            document.getElementById("moicaProblema").value = "YE - Armado/Normalizado HFC - Colocación de Hot Tap";
         }
         if ((Tipo == 2) && (Armado == "EXTERIOR")) {
             tipoTKT = "ComunExterior";
@@ -191,7 +195,7 @@ document.getElementById("TOP").addEventListener('change', () => {
             motivo = " FALTA REDUCCIÓN EDIFICIO NO CONTEMPLADO ";
             mensaje = " (CONDICIONANTE PARA GENERAR TICKET: ADJUNTAR EXTRACTO DE PLANO DEL SERVIDOR INDICANDO EL LOTE Y COLUMNA/POSTE A REALIZAR LA REFORMA) ";
             document.getElementById("EJEMPLO1").textContent = "No requiere Observacion adicional";
-            document.getElementById("PROBLEMA").value = "YE - Armado/Normalizado HFC - Falta Reducción";
+            document.getElementById("moicaProblema").value = "YE - Armado/Normalizado HFC - Falta Reducción";
         }
         if ((Tipo == 2) && (Armado == "MONTANTE")) {
             tipoTKT = "ComunMontante";
@@ -200,7 +204,7 @@ document.getElementById("TOP").addEventListener('change', () => {
             motivo = " FALTA REDUCCIÓN EDIFICIO NO CONTEMPLADO ";
             mensaje = " (CONDICIONANTE PARA GENERAR TICKET: ADJUNTAR EXTRACTO DE PLANO DEL SERVIDOR INDICANDO EL LOTE Y COLUMNA/POSTE A REALIZAR LA REFORMA) ";
             document.getElementById("EJEMPLO1").textContent = "No requiere Observacion adicional";
-            document.getElementById("PROBLEMA").value = "YE - Armado/Normalizado HFC - Falta Reducción";
+            document.getElementById("moicaProblema").value = "YE - Armado/Normalizado HFC - Falta Reducción";
         }
         if ((Tipo == 3) && (Armado == "EXTERIOR")) {
             tipoTKT = "ComunExterior";
@@ -211,7 +215,7 @@ document.getElementById("TOP").addEventListener('change', () => {
             mensaje = " (CONDICIONANTE PARA GENERAR TICKET: ADJUNTAR EXTRACTO DE PLANO DEL SERVIDOR INDICANDO EL LOTE Y COLUMNA/POSTE A REALIZAR LA REFORMA) ";
             document.getElementById("EJEMPLO1").textContent = `Encargado o Administracion indican que no esta permitido tomar tension del edificio.`;
             document.getElementById("EJEMPLO2").textContent = `El edificio no cuenta con tomas de tension disponibles en el lugar donde se debe realizar la instalación.`;
-            document.getElementById("PROBLEMA").value = "YE - Armado/Normalizado HFC - Falta Reducción";
+            document.getElementById("moicaProblema").value = "YE - Armado/Normalizado HFC - Falta Reducción";
         }
         if ((Tipo == 3) && (Armado == "MONTANTE")) {
             tipoTKT = "ComunMontante";
@@ -221,7 +225,7 @@ document.getElementById("TOP").addEventListener('change', () => {
             mensaje = " (CONDICIONANTE PARA GENERAR TICKET: ADJUNTAR EXTRACTO DE PLANO DEL SERVIDOR INDICANDO EL LOTE Y COLUMNA/POSTE A REALIZAR LA REFORMA) ";
             document.getElementById("EJEMPLO1").textContent = `Encargado o Administracion indican que no esta permitido tomar tension del edificio.`;
             document.getElementById("EJEMPLO2").textContent = `El edificio no cuenta con tomas de tension disponibles en el lugar donde se debe realizar la instalación.`;
-            document.getElementById("PROBLEMA").value = "YE - Armado/Normalizado HFC - Falta Reducción";
+            document.getElementById("moicaProblema").value = "YE - Armado/Normalizado HFC - Falta Reducción";
         }
         if ((Tipo == 4) && (Armado == "EXTERIOR")) {
             tipoTKT = "ComunExterior";
@@ -231,7 +235,7 @@ document.getElementById("TOP").addEventListener('change', () => {
             mensaje = "";
             document.getElementById("EJEMPLO1").textContent = `Fuera de rango 1.`;
             document.getElementById("EJEMPLO2").textContent = `Fuera de rango 2.`;
-            document.getElementById("PROBLEMA").value = "YE - Armado/Normalizado HFC - Falta Reducción";
+            document.getElementById("moicaProblema").value = "YE - Armado/Normalizado HFC - Falta Reducción";
         }
         if ((Tipo == 4) && (Armado == "MONTANTE")) {
             tipoTKT = "ComunMontante";
@@ -240,7 +244,7 @@ document.getElementById("TOP").addEventListener('change', () => {
             mensaje = "";
             document.getElementById("EJEMPLO1").textContent = `Fuera de rango 1.`;
             document.getElementById("EJEMPLO2").textContent = `Fuera de rango 2.`;
-            document.getElementById("PROBLEMA").value = "YE - Armado/Normalizado HFC - Falta Reducción";
+            document.getElementById("moicaProblema").value = "YE - Armado/Normalizado HFC - Falta Reducción";
         }
         if ((Tipo == 5) && (tecno == "1")) {
             tipoTKT = "EspecialZonaTapHot";
@@ -250,7 +254,7 @@ document.getElementById("TOP").addEventListener('change', () => {
             document.getElementById("OBS").value = "Para el Edificio se debe realizar la siguiente obra civil: "
             document.getElementById("EJEMPLO1").textContent = `Se requiere reforma civil sobre vereda para conectar la camara ubicada en altura 1 hasta la camara en altura 2. `;
             document.getElementById("EJEMPLO2").textContent = `Se requiere una reforma civil para colocar los tritubos desde la camara ubicada frente al edificio hasta la fachada izquierda para realizar acometida.`;
-            document.getElementById("PROBLEMA").value = "YE - Armado/Normalizado HFC - Reforma Civil";
+            document.getElementById("moicaProblema").value = "YE - Armado/Normalizado HFC - Reforma Civil";
         }
         if ((Tipo == 5) && (tecno == "2")) {
             tipoTKT = "EspecialZonaReduccion";
@@ -261,7 +265,7 @@ document.getElementById("TOP").addEventListener('change', () => {
             document.getElementById("OBS").value = "Para el Edificio se debe realizar la siguiente obra civil: "
             document.getElementById("EJEMPLO1").textContent = `Se requiere reforma civil sobre vereda para conectar la camara ubicada en altura 1 hasta la camara en altura 2. `;
             document.getElementById("EJEMPLO2").textContent = `Se requiere una reforma civil para colocar los tritubos desde la camara ubicada frente al edificio hasta la fachada izquierda para realizar acometida.`;
-            document.getElementById("PROBLEMA").value = "YE - Armado/Normalizado HFC - Reforma Civil";
+            document.getElementById("moicaProblema").value = "YE - Armado/Normalizado HFC - Reforma Civil";
         }
         if (Tipo == 6) {
             tipoTKT = "ColocacionColumnas";
@@ -274,7 +278,7 @@ document.getElementById("TOP").addEventListener('change', () => {
             document.getElementById("OBS").value = "(ACÁ SE DEBE EXPLICAR LA PROBLEMÁTICA, INDICAR DE QUÉ PUNTO A QUE PUNTO SE NECESITA LA COLOCACIÓN DE COLUMNAS/POSTES) ";
             document.getElementById("EJEMPLO1").textContent = `Se requiere Colocar columnas y postes.`;
             document.getElementById("EJEMPLO2").textContent = `Se requiere Colocar columnas y postes.`;
-            document.getElementById("PROBLEMA").value = "YE - Armado/Normalizado HFC - Colocación de Columnas y Postes";
+            document.getElementById("moicaProblema").value = "YE - Armado/Normalizado HFC - Colocación de Columnas y Postes";
 
         }
         if ((Tipo == 7) && (tecno == "1")) {
@@ -284,7 +288,7 @@ document.getElementById("TOP").addEventListener('change', () => {
             mensaje = " (CONDICIONANTE PARA GENERAR TICKET: ANTES DE GENERAR EL TICKET SE DEBE REALIZAR RELEVAMIENTO DE LA ZONA. DICHO RELEVAMIENTO SE DEBE ADJUNTAR AL TICKET EN UN CROQUIS INDICANDO LOTE A REALIZAR LA REFORMA Y SI HAY APOYOS EXISTENTES O SI HAY QUE COLOCAR APOYOS, TENIENDO EN CUENTA SI LA RED DEBE REALIZAR UN CRUCE, Y TODO LO NECESARIO PARA REALIZAR LA REFORMA) ";
             document.getElementById("EJEMPLO1").textContent = `Edificio localizado en Zona Hatch.`;
             document.getElementById("EJEMPLO2").textContent = `Edificio localizado en Zona Hatch.`;
-            document.getElementById("PROBLEMA").value = "YE - Armado HFC - Edificio en Zona Hatch";
+            document.getElementById("moicaProblema").value = "YE - Armado HFC - Edificio en Zona Hatch";
         }
         if ((Tipo == 7) && (tecno == "2")) {
             tipoTKT = "EspecialZonaReduccion";
@@ -294,7 +298,7 @@ document.getElementById("TOP").addEventListener('change', () => {
             mensaje = " (CONDICIONANTE PARA GENERAR TICKET: ANTES DE GENERAR EL TICKET SE DEBE REALIZAR RELEVAMIENTO DE LA ZONA. DICHO RELEVAMIENTO SE DEBE ADJUNTAR AL TICKET EN UN CROQUIS INDICANDO LOTE A REALIZAR LA REFORMA Y SI HAY APOYOS EXISTENTES O SI HAY QUE COLOCAR APOYOS, TENIENDO EN CUENTA SI LA RED DEBE REALIZAR UN CRUCE, Y TODO LO NECESARIO PARA REALIZAR LA REFORMA) ";
             document.getElementById("EJEMPLO1").textContent = `Edificio localizado en Zona Hatch.`;
             document.getElementById("EJEMPLO2").textContent = `Edificio localizado en Zona Hatch.`;
-            document.getElementById("PROBLEMA").value = "YE - Armado HFC - Edificio en Zona Hatch";
+            document.getElementById("moicaProblema").value = "YE - Armado HFC - Edificio en Zona Hatch";
         }
         if ((Tipo == 8) && (tecno == "1")) {
             tipoTKT = "EspecialZonaTapHot";
@@ -303,7 +307,7 @@ document.getElementById("TOP").addEventListener('change', () => {
             mensaje = " (CONDICIONANTE PARA GENERAR TICKET: ANTES DE GENERAR EL TICKET SE DEBE REALIZAR RELEVAMIENTO DE LA ZONA. DICHO RELEVAMIENTO SE DEBE ADJUNTAR AL TICKET EN UN CROQUIS INDICANDO LOTE A REALIZAR LA REFORMA Y SI HAY APOYOS EXISTENTES O SI HAY QUE COLOCAR APOYOS, TENIENDO EN CUENTA SI LA RED DEBE REALIZAR UN CRUCE, Y TODO LO NECESARIO PARA REALIZAR LA REFORMA) ";
             document.getElementById("EJEMPLO1").textContent = `Edificio fuera de Nodo.`;
             document.getElementById("EJEMPLO2").textContent = `Edificio fuera de Nodo.`;
-            document.getElementById("PROBLEMA").value = "YE - Armado HFC - Edificio Fuera de Nodo";
+            document.getElementById("moicaProblema").value = "YE - Armado HFC - Edificio Fuera de Nodo";
         }
         if ((Tipo == 8) && (tecno == "2")) {
             tipoTKT = "EspecialZonaReduccion";
@@ -313,7 +317,7 @@ document.getElementById("TOP").addEventListener('change', () => {
             mensaje = " (CONDICIONANTE PARA GENERAR TICKET: ANTES DE GENERAR EL TICKET SE DEBE REALIZAR RELEVAMIENTO DE LA ZONA. DICHO RELEVAMIENTO SE DEBE ADJUNTAR AL TICKET EN UN CROQUIS INDICANDO LOTE A REALIZAR LA REFORMA Y SI HAY APOYOS EXISTENTES O SI HAY QUE COLOCAR APOYOS, TENIENDO EN CUENTA SI LA RED DEBE REALIZAR UN CRUCE, Y TODO LO NECESARIO PARA REALIZAR LA REFORMA) ";
             document.getElementById("EJEMPLO1").textContent = `Edificio fuera de Nodo.`;
             document.getElementById("EJEMPLO2").textContent = `Edificio fuera de Nodo.`;
-            document.getElementById("PROBLEMA").value = "YE - Armado HFC - Edificio Fuera de Nodo";
+            document.getElementById("moicaProblema").value = "YE - Armado HFC - Edificio Fuera de Nodo";
         }
         if ((Tipo == 9) && (Armado == "EXTERIOR")) {
             tipoTKT = "NoHayLinga";
@@ -325,7 +329,7 @@ document.getElementById("TOP").addEventListener('change', () => {
             document.getElementById("OBS").value = "(ACÁ SE DEBE EXPLICAR LA PROBLEMÁTICA, INDICAR DE QUÉ PUNTO A QUE PUNTO SE NECESITA LA  COLOCACIÓN DE LINGA) ";
             document.getElementById("EJEMPLO1").textContent = `No hay linga para realizar la acometida hacia el edificio.`;
             document.getElementById("EJEMPLO2").textContent = `No hay linga para realizar la acometida hacia el edificio.`;
-            document.getElementById("PROBLEMA").value = "YE - Armado/Normalizado HFC - Falta Linga";
+            document.getElementById("moicaProblema").value = "YE - Armado/Normalizado HFC - Falta Linga";
         }
         if ((Tipo == 10) && (Armado == "EXTERIOR")) {
             tipoTKT = "NoHayLinga";
@@ -336,7 +340,7 @@ document.getElementById("TOP").addEventListener('change', () => {
             mensaje = "";
             document.getElementById("EJEMPLO1").textContent = `Se debe sacar el Power Blocking.`;
             document.getElementById("EJEMPLO2").textContent = `Se debe sacar el Power Blocking.`;
-            document.getElementById("PROBLEMA").value = "YE - Armado/Normalizado HFC - Falta Reducción";
+            document.getElementById("moicaProblema").value = "YE - Armado/Normalizado HFC - Falta Reducción";
         }
         if (Tipo == 11) {
             tipoTKT = "NoHayLinga";
@@ -347,7 +351,7 @@ document.getElementById("TOP").addEventListener('change', () => {
             mensaje = "";
             document.getElementById("EJEMPLO1").textContent = `El plano cargado en el servidor de planos de red no se visualiza correctamente.`;
             document.getElementById("EJEMPLO2").textContent = `El plano cargado en el servidor de planos de red no posee la informacion de las grillas visibles.`;
-            document.getElementById("PROBLEMA").value = "YE - Armado/Normalizado HFC - Falta Reducción";
+            document.getElementById("moicaProblema").value = "YE - Armado/Normalizado HFC - Falta Reducción";
         }
 
     }
@@ -725,6 +729,35 @@ const ModoFTTH = () => {
     OcultarCAJAPARAILUM();
     OcultarDATOSPARASC();
 
+}
+
+const BorrarPasosMoica = () => {
+    document.getElementById("moicaSectorInicial").value = "";
+    document.getElementById("moicaAsunto").value = "";
+    document.getElementById("moicaSector").value = "";
+    document.getElementById("moicaSubsector").value = "";
+    document.getElementById("moicaCola").value = "";
+    document.getElementById("moicaProblema").value = "";
+    document.getElementById("moicaTipoZona").value = "";
+}
+
+const PasosMoicaHFC = () => {
+    BorrarPasosMoica();
+    document.getElementById("moicaSectorInicial").value = "Armado de edificios";
+    document.getElementById("moicaAsunto").value = "Pedido de Reforma de Red para Edificios";
+    document.getElementById("moicaSector").value = "Diseño red";
+    document.getElementById("moicaSubsector").value = "Edificios HFC";
+    document.getElementById("moicaCola").value = "Diseño Edificios normalizado/armado reforma de red";
+    document.getElementById("moicaTipoZona").value = "Por Direccion";
+}
+
+const PasosMoicaFTTH = () => {
+    BorrarPasosMoica();
+    document.getElementById("moicaSectorInicial").value = "Armado de edificios";
+    document.getElementById("moicaSector").value = "No Aplica";
+    document.getElementById("moicaSubsector").value = "No Aplica";
+    document.getElementById("moicaCola").value = "No Aplica";
+    document.getElementById("moicaTipoZona").value = "Por Nodo";
 }
 
 const Limpiar = () => {

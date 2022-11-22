@@ -19,7 +19,7 @@
 
     <script src="https://kit.fontawesome.com/e64aa124f5.js" crossorigin="anonymous"></script>
 
-    <a href="https://drive.google.com/file/d/1ttCQmY6rEci2ZXB82Le4Mk_iQwybzNvz/view" target="_blank" class="btn-ayuda"
+    <a href="https://drive.google.com/file/d/1MyIR5M_Zwo3FMvhMdOKggZ4ItBuvAXqC/view" target="_blank" class="btn-ayuda"
         data-bs-toggle="tooltip" data-bs-placement="top" title="Manual">
         <i class="fa-solid fa-book"></i>
     </a>
@@ -131,7 +131,7 @@
                                             <option value=14>FTTH - Extension de Red</option>
                                             <option value=15>FTTH - Reforma Civil</option>
                                             <option value=16>FTTH - Gestion de Ampliacion</option>
-                                            <option value=17>FTTH - (SC) - Detalle de Empalme Edif ya ARMADO </option>
+                                            <option value=17>FTTH - (SC) - Detalle de Empalme Edif ya ARMADO</option>
                                             <option value=18>FTTH - (FC) - Iluminacion de CAJA Edif ya ARMADO</option>
                                         </select>
                                         <div class="invalid-tooltip">
@@ -280,9 +280,9 @@
                                 <div class="col-5">
                                     <select id="TAPHOT" class="form-select" required>
                                         <option selected disabled value="">Seleccione una opcion</option>
-                                        <option value="1">X2</option>
-                                        <option value="2">X4</option>
-                                        <option value="3">X8</option>
+                                        <option value="X2">X2</option>
+                                        <option value="X4">X4</option>
+                                        <option value="X8">X8</option>
                                     </select>
                                     <div class="invalid-tooltip">
                                         ¡Debes Seleccionar la TAP HOT a instalar!
@@ -528,12 +528,15 @@
                                 </div>
 
                                 <div class="col-5 pt-2">
+                                    <label class="form-check-label">¿Se Adjunta
+                                        Diseño?</label>
+                                    <label class="form-check-label">No</label>
+
                                     <div class="form-check form-check-inline form-switch">
 
                                         <input class="form-check-input" type="checkbox" role="switch"
                                             id="inlineCheckbox1" value="1">
-                                        <label class="form-check-label" for="inlineCheckbox1">¿Se Adjunta
-                                            Diseño?</label>
+                                        <label class="form-check-label">Si</label>
 
                                     </div>
                                 </div>
@@ -609,6 +612,15 @@
                     </div>
                 </div>
 
+                <div class="row">
+                    <div class="col-12 position-relative pt-2">
+                        <div class="col-sm-10 offset-sm-1 d-grid gap-2">
+                            <a href="https://moica2.telecentro.net.ar/viewCrearTktManual.php" target="_blank"
+                                class="btn btn-primary" role="button">MOICA2</a>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="row mt-3">
                     <div class="col-12 position-relative">
                         <div class="input-group">
@@ -621,6 +633,8 @@
                                     <option selected disabled value="">Seleccione una opcion</option>
                                     <option value="HOT TAP">HOT TAP</option>
                                     <option value="No Contemplado">No Contemplado</option>
+                                    <option value="FTTH Empalme">FTTH Empalme</option>
+                                    <option value="Iluminacion CAJA - FTTH">Iluminacion CAJA - FTTH</option>
                                     <option value="Obra Civil">Obra Civil</option>
                                 </select>
                             </div>
@@ -635,6 +649,15 @@
                     </div>
                     <div class="col-sm-10 offset-sm-1 d-grid gap-2">
                         <button type="submit" class="btn btn-success" id="COPIAR2">COPIAR</button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 position-relative pt-2">
+                        <div class="col-sm-10 offset-sm-1 d-grid gap-2">
+                            <a href="http://crm.telecentro.local/Edificio/Gt_Edificio/BandejaEntradaDeRelevamiento.aspx?TituloPantalla=Descarga%20De%20Relevamiento&EstadoGestionId=5&TipoGestionId=3&TipoGestion=OPERACIONES%20DE%20RED%20-%20CIERRE%20DE%20RELEVAMIENTO"
+                                target="_blank" class="btn btn-primary" role="button">CRM - Cierre Relevamiento</a>
+                        </div>
                     </div>
                 </div>
 
@@ -660,16 +683,15 @@
                                 <div class="col-md-5">
                                     <div class="input-group input-group-sm col mb-3">
                                         <span class="input-group-text">Sector Inicial</span>
-                                        <input type="text" class="form-control" value="Armado de edificios"
-                                            style="background-color: #FFFFFF;" readonly>
+                                        <input type="text" class="form-control" value=""
+                                            style="background-color: #FFFFFF;" id="moicaSectorInicial" readonly>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="input-group input-group-sm col mb-3">
                                         <span class="input-group-text">Asunto</span>
-                                        <input type="text" class="form-control"
-                                            value="Pedido de Reforma de Red para Edificios"
-                                            style="background-color: #FFFFFF;" readonly>
+                                        <input type="text" class="form-control" value=""
+                                            style="background-color: #FFFFFF;" id="moicaAsunto" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -678,23 +700,22 @@
                                 <div class="col-md-3">
                                     <div class="input-group input-group-sm col mb-3">
                                         <span class="input-group-text">Sector</span>
-                                        <input type="text" class="form-control" value="Diseño red"
-                                            style="background-color: #FFFFFF;" readonly>
+                                        <input type="text" class="form-control" value=""
+                                            style="background-color: #FFFFFF;" id="moicaSector" readonly>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="input-group input-group-sm col mb-3">
                                         <span class="input-group-text">Subsector</span>
-                                        <input type="text" class="form-control" value="Edificios HFC"
-                                            style="background-color: #FFFFFF;" readonly>
+                                        <input type="text" class="form-control" value=""
+                                            style="background-color: #FFFFFF;" id="moicaSubsector" readonly>
                                     </div>
                                 </div>
                                 <div class="col-md-5">
                                     <div class="input-group input-group-sm col mb-3">
                                         <span class="input-group-text">Cola</span>
-                                        <input type="text" class="form-control"
-                                            value="Diseño Edificios normalizado/armado reforma de red"
-                                            style="background-color: #FFFFFF;" readonly>
+                                        <input type="text" class="form-control" value=""
+                                            style="background-color: #FFFFFF;" id="moicaCola" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -704,7 +725,7 @@
                                     <span class="input-group-text">Agregar Problema</span>
                                     <span class="input-group-text">-Problema-</span>
                                     <input type="text" class="form-control" value="" style="background-color: #FFFFFF;"
-                                        id="PROBLEMA" readonly>
+                                        id="moicaProblema" readonly>
                                 </div>
                             </div>
 
@@ -712,8 +733,8 @@
                                 <div class="input-group input-group-sm col mb-3">
                                     <span class="input-group-text">Zona de afectacion</span>
                                     <span class="input-group-text">Tipo Zona</span>
-                                    <input type="text" class="form-control" value="Por Direccion"
-                                        style="background-color: #FFFFFF;" readonly>
+                                    <input type="text" class="form-control" value="" style="background-color: #FFFFFF;"
+                                        id="moicaTipoZona" readonly>
                                 </div>
                             </div>
                         </div>
