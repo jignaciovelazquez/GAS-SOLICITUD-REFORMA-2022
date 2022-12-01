@@ -25,9 +25,7 @@
     </a>
 
     <style>
-        /*--------------------------------------------------------------
-    # btn-ayuda
-    --------------------------------------------------------------*/
+        /*------------------------------- # btn-ayuda -------------------------------------*/
 
         .btn-ayuda {
             position: fixed;
@@ -45,6 +43,23 @@
             z-index: 100;
         }
     </style>
+
+    <!----------------------------------------------------------------------------------->
+
+    <!------------------------------- Alerta del Manual Toast ------------------------>
+    <div class="col-12">
+        <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1">
+            <div id="liveToast" class="toast hide text-bg-danger" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <strong class="me-auto">AYUDA</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    Manual de Funcionamiento
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!----------------------------------------------------------------------------------->
 
@@ -414,12 +429,10 @@
                             <div class="input-group">
                                 <label for="CAJAENRELEVO" class="col-4 col-form-label text-start">Caja que se debe
                                     iluminar:</label>
-                                <div class="col-5">
+                                <div class="col-6">
                                     <div class="input-group">
-                                        <div class="col">
-                                            <input type="text" class="form-control"
-                                                placeholder="Ingresar la Caja a Iluminar" id="CAJAILUMINAR" required>
-                                        </div>
+                                        <input type="text" class="form-control"
+                                            placeholder="Ingresar la Caja a Iluminar" id="CAJAILUMINAR" required>
                                         <div class="invalid-tooltip">
                                             ¡Debes ingresar la Caja a Iluminar!
                                         </div>
@@ -429,34 +442,45 @@
                             </div>
                         </div>
 
+                        <div class="col-12 position-relative" id="CAJASUGERIDA">
+                            <div class="input-group">
+                                <label for="CAJAENRELEVO" class="col-4 col-form-label text-start">¿El
+                                    relevamiento sugiere caja con puertos disponibles?</label>
+                                <div class="col-2">
+                                    <select id="CAJAENRELEVO" class="form-select" required>
+                                        <option selected disabled value="">Seleccione</option>
+                                        <option value="Si">SI</option>
+                                        <option value="No">NO</option>
+                                    </select>
+                                    <div class="invalid-tooltip">
+                                        ¡Debes indicar si el relevamiento sugiere una cja para conectar el
+                                        Edif o no!
+                                    </div>
+                                </div>
+                                <div class="col-5">
+                                    <div class="input-group">
+                                        <div class="col">
+                                            <input type="text" class="form-control"
+                                                placeholder="Ingresar la Caja sugerida" id="CAJASEGUNRELEVO" required>
+                                        </div>
+                                        <div class="invalid-tooltip">
+                                            ¡Debes ingresar la Caja sugerida!
+                                        </div>
+                                        <button class="btn btn-secondary" type="button" id="SUGERIR3">Sugerir</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="col-12 position-relative" id="DATOSPARASC">
                             <div class="row">
                                 <label for="inputPassword" class="col-sm-12 col-form-label fw-bold text-start">Fibras
                                     sugeridas para el armado</label>
-
-
                                 <div class="col-12 position-relative pt-1">
                                     <div class="input-group">
-                                        <div class="col-6">
-                                            <select id="TIPOFIBRA" class="form-select" required>
-                                                <option selected disabled value="">Seleccione una opcion</option>
-                                                <option value="FC50">FC50</option>
-                                                <option value="FC100">FC100</option>
-                                                <option value="FC150">FC150</option>
-                                                <option value="FC200">FC200</option>
-                                                <option value="MPO100">MPO100</option>
-                                                <option value="MPO150">MPO150</option>
-                                                <option value="MPO200">MPO200</option>
-                                                <option value="FOx12">FOx12</option>
-                                                <option value="FOx48">FOx48</option>
-                                            </select>
-                                            <div class="invalid-tooltip">
-                                                ¡Debes Seleccionar la Fibra Sugerida para el Armado!
-                                            </div>
-                                        </div>
                                         <div class="col-3">
                                             <input class="form-control" list="datalistOptions4" id="NTIPOFIBRA"
-                                                placeholder="Seleccione">
+                                                placeholder="Seleccione" required>
                                             <datalist id="datalistOptions4">
                                                 <option value="1">
                                                 <option value="2">
@@ -468,6 +492,34 @@
                                                 ¡Debes Indicar la Cantidad de Fibras Sugeridas!
                                             </div>
                                         </div>
+                                        <div class="col-3">
+                                            <input class="form-control" list="datalistOptions5" id="TIPOFIBRA"
+                                                placeholder="Seleccione" required>
+                                            <datalist id="datalistOptions5">
+                                                <option value="FC">
+                                                <option value="MPO">
+                                                <option value="FOx12">
+                                                <option value="FOx48">
+                                            </datalist>
+                                            <div class="invalid-tooltip">
+                                                ¡Debes Seleccionar la Fibra Sugerida para el Armado!
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <input class="form-control" list="datalistOptions6" id="LARGOFIBRA"
+                                                placeholder="Seleccione" required>
+                                            <datalist id="datalistOptions6">
+                                                <option value="50">
+                                                <option value="100">
+                                                <option value="150">
+                                                <option value="200">
+                                                <option value="XX">
+                                            </datalist>
+                                            <div class="invalid-tooltip">
+                                                ¡Debes Seleccionar la longitud de la Fibra Sugerida para el Armado!
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
 
@@ -478,48 +530,14 @@
                                                 desde donde toma el Edif:</label>
                                             <div class="col-5">
                                                 <div class="input-group">
-                                                    <div class="col">
-                                                        <input type="text" class="form-control"
-                                                            placeholder="Ingresar la Caja desde donde toma el Edif"
-                                                            id="CAJAFTTH" required>
-                                                    </div>
+                                                    <input type="text" class="form-control"
+                                                        placeholder="Ingresar la Caja desde donde toma el Edif"
+                                                        id="CAJAFTTH" required>
                                                     <div class="invalid-tooltip">
                                                         ¡Debes ingresar una Caja desde donde toma el Edif!
                                                     </div>
                                                     <button class="btn btn-secondary" type="button"
                                                         id="SUGERIR2">Sugerir</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row" id="CAJASUGERIDA">
-                                        <div class="input-group">
-                                            <label for="CAJAENRELEVO" class="col-4 col-form-label text-start">¿El
-                                                relevamiento sugiere caja con puertos disponibles?</label>
-                                            <div class="col-2">
-                                                <select id="CAJAENRELEVO" class="form-select" required>
-                                                    <option selected disabled value="">Seleccione</option>
-                                                    <option value="Si">SI</option>
-                                                    <option value="No">NO</option>
-                                                </select>
-                                                <div class="invalid-tooltip">
-                                                    ¡Debes indicar si el relevamiento sugiere una cja para conectar el
-                                                    Edif o no!
-                                                </div>
-                                            </div>
-                                            <div class="col-5">
-                                                <div class="input-group">
-                                                    <div class="col">
-                                                        <input type="text" class="form-control"
-                                                            placeholder="Ingresar la Caja sugerida" id="CAJASEGUNRELEVO"
-                                                            required>
-                                                    </div>
-                                                    <div class="invalid-tooltip">
-                                                        ¡Debes ingresar la Caja sugerida!
-                                                    </div>
-                                                    <button class="btn btn-secondary" type="button"
-                                                        id="SUGERIR3">Sugerir</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -743,26 +761,6 @@
             </div>
 
         </div>
-
-
-
-
-        <!------------------------------- Alerta del Manual Toast ------------------------>
-        <div class="col-12">
-            <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1">
-                <div id="liveToast" class="toast hide text-bg-danger" role="alert" aria-live="assertive"
-                    aria-atomic="true">
-                    <div class="toast-header">
-                        <strong class="me-auto">AYUDA</strong>
-                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                    </div>
-                    <div class="toast-body">
-                        Manual de Funcionamiento
-                    </div>
-                </div>
-            </div>
-        </div>
-
 
 
 

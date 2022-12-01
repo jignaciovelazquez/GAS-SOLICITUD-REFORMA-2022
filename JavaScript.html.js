@@ -97,6 +97,7 @@ document.getElementById("TOP").addEventListener('change', () => {
     if (document.getElementById("TIPO").value >= 12) {
 
         ModoFTTH();
+        OcultarCAJASUGERIDA();
         let Tipo = document.getElementById("TIPO").value;
 
         if (Tipo == 12) {
@@ -142,12 +143,15 @@ document.getElementById("TOP").addEventListener('change', () => {
         if (Tipo == 16) {
             tipoTKT = "FTTHampliacion";
             MostrarDATOSPARASC();
+            MostrarCAJASUGERIDA();
             motivo = "FTTH - Gestion de Ampliacion";
             mensaje = "";
             document.getElementById("CONTEMPLADO").disabled = true;
             document.getElementById("OBS").value = "";
             document.getElementById("EJEMPLO1").textContent = "No requiere Observacion adicional";
             document.getElementById("moicaProblema").value = "YE - Armado/Normalizado HFC - Falta Reducción";
+            document.getElementById("CONTEMPLADO").value = "No";
+
         }
         if (Tipo == 17) {
             tipoTKT = "FTTHarmadoSC";
@@ -406,27 +410,27 @@ document.getElementById("SUGERIR4").addEventListener('click', () => {
 })
 
 document.getElementById("CONTEMPLADO").addEventListener('change', () => {
-
     if (document.getElementById("CONTEMPLADO").value == "Si") {
-
         MostrarCAJATOMA();
         OcultarCAJASUGERIDA();
-
-
     }
-
     if (document.getElementById("CONTEMPLADO").value == "No") {
-
         MostrarCAJASUGERIDA();
         OcultarCAJATOMA();
-        /*
-        document.getElementById("CAJASEGUNRELEVO").disabled = true;
-        document.getElementById("SUGERIR3").disabled = true;
-        */
-
-
     }
+})
 
+document.getElementById("CAJAENRELEVO").addEventListener('change', () => {
+    if (document.getElementById("CAJAENRELEVO").value == "Si") {
+        document.getElementById("CAJASEGUNRELEVO").value = "";
+        document.getElementById("LARGOFIBRA").value = "";
+        document.getElementById("CAJASEGUNRELEVO").readonly = false;
+    }
+    if (document.getElementById("CAJAENRELEVO").value == "No") {
+        document.getElementById("CAJASEGUNRELEVO").value = "XX";
+        document.getElementById("LARGOFIBRA").value = "XX";
+        document.getElementById("CAJASEGUNRELEVO").readonly = true;
+    }
 })
 /*
 document.getElementById("CAJAENRELEVO").addEventListener('change', () => {
@@ -472,21 +476,22 @@ document.getElementById("FORMULARIO").addEventListener('submit', () => {
         let datoRETORNO = document.getElementById("RETORNO").value;
         let datoOBS = document.getElementById("OBS").value;
         let datoDISTRIBUCION = document.getElementById("ARMADO").value;
-
         let datoPISOSFTTH = document.getElementById("PISOSFTTH").value;
         let datoUFFTTH = document.getElementById("UFFTTH").value;
         let datoMTSFTTH = document.getElementById("MTSFTTH").value;
         let datoCONTEMPLADO = document.getElementById("CONTEMPLADO").value;
-        let notaCONTEMPLADO = "";
+        let notaCONTEMPLADO;
         let datoNOTA = "Nota: No se adjunta diseño ya que la complejidad del caso no lo requiere.";
         let datoCAJAFTTH = document.getElementById("CAJAFTTH").value;
         let datoTIPOFIBRA = document.getElementById("TIPOFIBRA").value;
+        let datoLARGOFIBRA = ` de ${document.getElementById("LARGOFIBRA").value}m`;
         let datoNTIPOFIBRA = document.getElementById("NTIPOFIBRA").value;
         let datoCAJAENRELEVO = document.getElementById("CAJAENRELEVO").value;
         let datoCAJASEGUNRELEVO = document.getElementById("CAJASEGUNRELEVO").value;
         let datoCAJAILUMINAR = document.getElementById("CAJAILUMINAR").value;
 
         let datoTKT = document.getElementById("TKT").value;
+        let datoTKTPREVIO = document.getElementById("TIPOTKT").value;
         let tktPREVIO = "";
 
         let datoTECNOLOGIA = "";
@@ -504,11 +509,10 @@ document.getElementById("FORMULARIO").addEventListener('submit', () => {
             notaCONTEMPLADO = ` desde la caja ${datoCAJAFTTH}`;
         } else {
             if (datoCAJAENRELEVO == "Si") {
-                notaCONTEMPLADO = ` desde el relavamiento indican que se encuentra la caja ${datoCAJASEGUNRELEVO} disponible.`;
+                notaCONTEMPLADO = ` desde el relavamiento indican que se encuentra la caja ${datoCAJASEGUNRELEVO} disponible`;
             } else {
-                notaCONTEMPLADO = ` desde el relavamiento NO indican caja disponible.`;
+                notaCONTEMPLADO = ` desde el relavamiento NO indican caja disponible`;
             }
-
         }
 
 
@@ -516,8 +520,8 @@ document.getElementById("FORMULARIO").addEventListener('submit', () => {
             datoNOTA = "Nota: Se adjunta diseño.";
         }
 
-        if (datoTKT != "") {
-            tktPREVIO = `Nota: Ticket generado en Moica ${datoTKT} Motivo Iluminacion CAJA - FTTH.\n`;
+        if ((datoTKT != "") && (datoTKTPREVIO == "Iluminacion CAJA - FTTH")) {
+            tktPREVIO = `Nota: Ticket generado en Moica ${datoTKT} Motivo Iluminacion CAJA - FTTH.`;
         }
 
 
@@ -525,14 +529,14 @@ document.getElementById("FORMULARIO").addEventListener('submit', () => {
 
         switch (tipoTKT) {
             case "NoHayTapHot":
-                FORMATO = `Motivo: ${motivo}\nID: ${datoID}\nCantidad de pisos: ${datoPISOS}\nCantidad de UF: ${datoUF}\nNodo: ${datoNODO}\nDirección ${datoDIRECCION}\nEntre calles: ${datoENTRECALLE1} y ${datoENTRECALLE2}\nPoste: ${datoPOSTE}\nRG11 (mtrs): ${datoMETROS}\nCapacidad de Tap Hot: ${datoTAPHOT}\n`;
+                FORMATO = `Motivo: ${motivo}\nID: ${datoID}\nCantidad de pisos: ${datoPISOS}\nCantidad de UF: ${datoUF}\nNodo: ${datoNODO}\nDirección ${datoDIRECCION}\nEntre calles: ${datoENTRECALLE1} y ${datoENTRECALLE2}\nPoste: ${datoPOSTE}\nRG11 (mtrs): ${datoMETROS}\nCapacidad de Tap Hot: ${datoTAPHOT}\nObservaciones: ${datoOBS}\n`;
                 break;
 
             case "ComunExterior":
-                FORMATO = `Motivo: ${motivo}\nDistribución: ${datoDISTRIBUCION}\nID: ${datoID}\nCantidad de pisos: ${datoPISOS}\nCantidad de UF: ${datoUF}\nNodo: ${datoNODO}\nDirección ${datoDIRECCION}\nEntre calles: ${datoENTRECALLE1} y ${datoENTRECALLE2}\nPoste: ${datoPOSTE}\nRG11 (mtrs): ${datoMETROS}\nDisponibilidad para instalar Amplificador 90 [V]: ${datoAMPLI}\n`;
+                FORMATO = `Motivo: ${motivo}\nDistribución: ${datoDISTRIBUCION}\nID: ${datoID}\nCantidad de pisos: ${datoPISOS}\nCantidad de UF: ${datoUF}\nNodo: ${datoNODO}\nDirección ${datoDIRECCION}\nEntre calles: ${datoENTRECALLE1} y ${datoENTRECALLE2}\nPoste: ${datoPOSTE}\nRG11 (mtrs): ${datoMETROS}\nDisponibilidad para instalar Amplificador 90 [V]: ${datoAMPLI}\nObservaciones: ${datoOBS}\n`;
                 break;
             case "ComunMontante":
-                FORMATO = `Motivo: ${motivo}\nDistribución: ${datoDISTRIBUCION}\nID: ${datoID}\nCantidad de pisos: ${datoPISOS}\nCantidad de UF: ${datoUF}\nNodo: ${datoNODO}\nDirección ${datoDIRECCION}\nEntre calles: ${datoENTRECALLE1} y ${datoENTRECALLE2}\nPoste: ${datoPOSTE}\nRG11 (mtrs): ${datoMETROS}\nDisponibilidad para instalar Amplificador 90 [V]: ${datoAMPLI}\nValores que debe entregar la red:\nCH116: ${datoCH116}\nCH3: ${datoCH3}\nRETORNO: ${datoRETORNO}\n`;
+                FORMATO = `Motivo: ${motivo}\nDistribución: ${datoDISTRIBUCION}\nID: ${datoID}\nCantidad de pisos: ${datoPISOS}\nCantidad de UF: ${datoUF}\nNodo: ${datoNODO}\nDirección ${datoDIRECCION}\nEntre calles: ${datoENTRECALLE1} y ${datoENTRECALLE2}\nPoste: ${datoPOSTE}\nRG11 (mtrs): ${datoMETROS}\nDisponibilidad para instalar Amplificador 90 [V]: ${datoAMPLI}\nValores que debe entregar la red:\nCH116: ${datoCH116}\nCH3: ${datoCH3}\nRETORNO: ${datoRETORNO}\nObservaciones: ${datoOBS}\n`;
                 break;
             case "EspecialZonaTapHot":
                 FORMATO = `Motivo: ${motivo}\nTecnología: ${datoTECNOLOGIA}\nDistribución: ${datoDISTRIBUCION}\nID: ${datoID}\nCantidad de pisos: ${datoPISOS}\nCantidad de UF: ${datoUF}\nNodo: ${datoNODO}\nDirección ${datoDIRECCION}\nEntre calles: ${datoENTRECALLE1} y ${datoENTRECALLE2}\nPoste: ${datoPOSTE}\nRG11 (mtrs): ${datoMETROS}\nCapacidad de Tap Hot: ${datoTAPHOT}\nDisponibilidad para instalar Amplificador 90 [V]: ${datoAMPLI}\nObservaciones: ${datoOBS}\n`;
@@ -550,7 +554,7 @@ document.getElementById("FORMULARIO").addEventListener('submit', () => {
                 break;
 
             case "FTTHSC":
-                FORMATO = `Motivo: ${motivo}\nID: ${datoID}\nCantidad de pisos: ${datoPISOSFTTH}\nCantidad de UF: ${datoUFFTTH}\nNodo: ${datoNODO}\nDirección ${datoDIRECCION}\n\n*- Para el Edificio en cuestión se solicita el Detalle de Empalme.\n*- Se necesitan aproximadamente ${datoMTSFTTH} mts para el recorrido interno (desde fachada a caja a instalar, incluyendo 20m para el rollo de ganancia).\n*- En plano de red el edificio ${datoCONTEMPLADO} esta contemplado, ${notaCONTEMPLADO}.\n*- Se recomienda contemplar ${datoNTIPOFIBRA} ${datoTIPOFIBRA} para el diseño.\n\nObservaciones: ${datoOBS}\n\n${tktPREVIO}${datoNOTA}\n`;
+                FORMATO = `Motivo: ${motivo}\nID: ${datoID}\nCantidad de pisos: ${datoPISOSFTTH}\nCantidad de UF: ${datoUFFTTH}\nNodo: ${datoNODO}\nDirección ${datoDIRECCION}\n\n*- Para el Edificio en cuestión se solicita el Detalle de Empalme.\n*- Se necesitan aproximadamente ${datoMTSFTTH} mts para el recorrido interno (desde fachada a caja a instalar, incluyendo 20m para el rollo de ganancia).\n*- En plano de red el edificio ${datoCONTEMPLADO} esta contemplado, ${notaCONTEMPLADO}.\n*- Se recomienda contemplar ${datoNTIPOFIBRA} ${datoTIPOFIBRA}${datoLARGOFIBRA} para el diseño.\n\nObservaciones: ${datoOBS}\n\n${tktPREVIO}\n${datoNOTA}\n`;
                 break;
 
             case "FTTHFC":
@@ -566,15 +570,15 @@ document.getElementById("FORMULARIO").addEventListener('submit', () => {
                 break;
 
             case "FTTHampliacion":
-                FORMATO = `Motivo: ${motivo}\nID: ${datoID}\nCantidad de pisos: ${datoPISOSFTTH}\nCantidad de UF: ${datoUFFTTH}\nNodo: ${datoNODO}\nDirección ${datoDIRECCION}\n\n*- Para la AMPLIACION de capacidad del Edificio en cuestión se solicita nuevo Detalle de Empalme.\n*- Se necesitan aproximadamente ${datoMTSFTTH} mts para el recorrido interno (desde fachada a caja a instalar, incluyendo 20m para el rollo de ganancia).\n*- Se recomienda contemplar ${datoNTIPOFIBRA} ${datoTIPOFIBRA} adicional a lo existente.\n\nObservaciones: ${datoOBS}\n\n${tktPREVIO}${datoNOTA}\n`;
+                FORMATO = `Motivo: ${motivo}\nID: ${datoID}\nCantidad de pisos: ${datoPISOSFTTH}\nCantidad de UF: ${datoUFFTTH}\nNodo: ${datoNODO}\nDirección ${datoDIRECCION}\n\n*- Para la AMPLIACION de capacidad del Edificio en cuestión se solicita nuevo Detalle de Empalme.\n*- Se necesitan aproximadamente ${datoMTSFTTH} mts para el recorrido interno (desde fachada a caja a instalar, incluyendo 20m para el rollo de ganancia).\n*-${notaCONTEMPLADO}.\n*- Se recomienda contemplar ${datoNTIPOFIBRA} ${datoTIPOFIBRA}${datoLARGOFIBRA} adicional a lo existente.\n\nObservaciones: ${datoOBS}\n\n${tktPREVIO}\n${datoNOTA}\n`;
                 break;
 
             case "FTTHarmadoSC":
-                FORMATO = `Motivo: ${motivo}\nID: ${datoID}\nCantidad de pisos: ${datoPISOSFTTH}\nCantidad de UF: ${datoUFFTTH}\nNodo: ${datoNODO}\nDirección ${datoDIRECCION}\n\n*- Para el Edificio en cuestión se solicita el Detalle de Empalme.\n*- Se necesitan aproximadamente ${datoMTSFTTH} mts para el recorrido interno (desde fachada a caja a instalar, incluyendo 20m para el rollo de ganancia).\n*- En plano de red el edificio ${datoCONTEMPLADO} esta contemplado, ${notaCONTEMPLADO}.\n*- Se recomienda contemplar ${datoNTIPOFIBRA} ${datoTIPOFIBRA} para el diseño.\n\nObservaciones: ${datoOBS}\n\n${tktPREVIO}${datoNOTA}\n`;
+                FORMATO = `Motivo: ${motivo}\nID: ${datoID}\nCantidad de pisos: ${datoPISOSFTTH}\nCantidad de UF: ${datoUFFTTH}\nNodo: ${datoNODO}\nDirección ${datoDIRECCION}\n\n*- Para el Edificio EXPRESS en cuestión se solicita el Detalle de Empalme.\n*- Se necesitan aproximadamente ${datoMTSFTTH} mts para el recorrido interno (desde fachada a caja a instalar, incluyendo 20m para el rollo de ganancia).\n*- En plano de red el edificio ${datoCONTEMPLADO} esta contemplado, ${notaCONTEMPLADO}.\n*- Se recomienda contemplar ${datoNTIPOFIBRA} ${datoTIPOFIBRA}${datoLARGOFIBRA} para el diseño.\n\nObservaciones: ${datoOBS}\n\n${tktPREVIO}\n${datoNOTA}\n`;
                 break;
 
             case "FTTHarmadoFC":
-                FORMATO = `Motivo: ${motivo}\nID: ${datoID}\nCantidad de pisos: ${datoPISOSFTTH}\nCantidad de UF: ${datoUFFTTH}\nNodo: ${datoNODO}\nDirección ${datoDIRECCION}\n\n*- Para la Gestion de Ampliacion se solicita la Iluminación de la caja ${datoCAJAILUMINAR} para realizar el respectivo armado.\n\nObservaciones: ${datoOBS}\n\n${datoNOTA}\n`;
+                FORMATO = `Motivo: ${motivo}\nID: ${datoID}\nCantidad de pisos: ${datoPISOSFTTH}\nCantidad de UF: ${datoUFFTTH}\nNodo: ${datoNODO}\nDirección ${datoDIRECCION}\n\n*- Para el Edificio EXPRESS en cuestión se solicita la Iluminación de la caja ${datoCAJAILUMINAR} para realizar el respectivo armado.\n\nObservaciones: ${datoOBS}\n\n${datoNOTA}\n`;
                 break;
 
         }
@@ -719,6 +723,7 @@ const ModoFTTH = () => {
     document.getElementById("TECNOLOGIA").value = "";
     document.getElementById("ARMADO").value = "";
     document.getElementById("OBS").value = "";
+    document.getElementById("CONTEMPLADO").value = "";
     document.getElementById("TECNOLOGIA").disabled = true;
     document.getElementById("ARMADO").disabled = true;
     document.getElementById("MTSFTTH").disabled = false;
@@ -825,9 +830,63 @@ function validarCampos() {
             }
             return false
         }
+    } else {
+
+        if ((document.getElementById("ID").value == "") || (document.getElementById("NODO").value == "") || (document.getElementById("DIRECCION").value == "") || (document.getElementById("PISOSFTTH").value == "") || (document.getElementById("UFFTTH").value == "")) {
+            return true
+        }
+        else {
+            if ((document.getElementById("TIPO").value == 12) || (document.getElementById("TIPO").value == 17)) {
+                if ((document.getElementById("MTSFTTH").value == "") || (document.getElementById("CONTEMPLADO").value == "") || (document.getElementById("NTIPOFIBRA").value == "") || (document.getElementById("TIPOFIBRA").value == "") || (document.getElementById("LARGOFIBRA").value == "")) {
+                    return true
+                } else {
+                    if (document.getElementById("CONTEMPLADO").value == "Si") {
+                        if (document.getElementById("CAJAFTTH").value == "") {
+                            return true
+                        }
+                    } else {
+                        if (document.getElementById("CAJAENRELEVO").value == "") {
+                            return true
+                        } else {
+                            if (document.getElementById("CAJAENRELEVO").value == "Si") {
+                                if (document.getElementById("CAJASEGUNRELEVO").value == "") {
+                                    return true
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (((document.getElementById("TIPO").value == 13) || (document.getElementById("TIPO").value == 18)) && (document.getElementById("CAJAILUMINAR").value == "")) {
+                return true
+            }
+
+            if ((document.getElementById("TIPO").value == 14) && (document.getElementById("OBS").value == "Para el edificio en cuestión se solicita contemplar la opción de extender la red sobre ")) {
+                alert("Debes agregar una observación describiendo la problemática.")
+                return true
+            }
+
+            if ((document.getElementById("TIPO").value == 15) && (document.getElementById("OBS").value == "Para el edificio en cuestión se solicita contemplar la ejecucion de una Obra Civil para ")) {
+                alert("Debes agregar una observación describiendo la problemática.")
+                return true
+            }
+
+            if (document.getElementById("TIPO").value == 16) {
+                if ((document.getElementById("MTSFTTH").value == "") || (document.getElementById("NTIPOFIBRA").value == "") || (document.getElementById("TIPOFIBRA").value == "") || (document.getElementById("LARGOFIBRA").value == "")) {
+                    return true
+                } if (document.getElementById("CAJAENRELEVO").value == "") {
+                    return true
+                } else {
+                    if (document.getElementById("CAJAENRELEVO").value == "Si") {
+                        if (document.getElementById("CAJASEGUNRELEVO").value == "") {
+                            return true
+                        }
+                    }
+                }
+            }
+        }
     }
-
-
 }
 
 
