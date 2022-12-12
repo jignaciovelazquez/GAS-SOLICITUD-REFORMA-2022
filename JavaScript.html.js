@@ -475,6 +475,8 @@ document.getElementById("FORMULARIO").addEventListener('submit', () => {
             document.getElementById("GENERAR").disabled = false;
         }, 2000);
 
+        FORMATO = "";
+
         let datoID = document.getElementById("ID").value;
         let datoPISOS = document.getElementById("PISOS").value;
         let datoUF = document.getElementById("UF").value;
